@@ -7,7 +7,7 @@ export default function Navbar() {
     return (
         <div class="navbar bg-base-100">
             <div class="navbar-start">
-                <div class="dropdown">
+                <div class="dropdown w-fit">
                     <label tabindex="0" class="btn btn-ghost btn-circle">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"

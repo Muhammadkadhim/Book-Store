@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function Login() {
     return (
         <Container>
-            <div class="text-sm breadcrumbs">
+            <div class="text-sm breadcrumbs w-10/12 mx-auto">
                 <ul>
                     <li>
                         <Link to="/">Home</Link>
