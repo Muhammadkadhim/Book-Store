@@ -28,8 +28,18 @@ export default function Navbar() {
                         tabindex="0"
                         class="menu menu-compact dropdown-content mt-3 p-2 shadow-sm shadow-gray-900 bg-base-100 rounded-box w-52"
                     >
-                        <li className="opacity-50 pointer-events-none border-b border-gray-500">
-                            <Link to="#">Categories</Link>
+                        <li class="menu-title">
+                            <span>Pages</span>
+                        </li>
+                        <li>
+                            <Link to="#">Home</Link>
+                        </li>
+                        <li>
+                            <Link to="#">About</Link>
+                        </li>
+
+                        <li class="menu-title mt-3">
+                            <span>Category</span>
                         </li>
                         <li>
                             <Link to="#">Classics</Link>
