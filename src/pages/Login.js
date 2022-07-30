@@ -1,3 +1,4 @@
+import { MdEmail, MdLock } from "react-icons/md";
 import { Container } from "../containers";
 import { Link } from "react-router-dom";
 
@@ -60,15 +61,9 @@ export default function Login() {
                                 placeholder="Email"
                             />
                             <div class="absolute left-0 inset-y-0 flex items-center">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    class="h-7 w-7 ml-3 text-gray-400 p-1"
-                                    viewBox="0 0 20 20"
-                                    fill="currentColor"
-                                >
-                                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-                                </svg>
+                                <div class="h-7 w-7 ml-3 text-gray-400 p-1">
+                                    <MdEmail fontSize={"22px"} />
+                                </div>
                             </div>
                         </div>
                         <div class="relative mt-3">
@@ -79,14 +74,9 @@ export default function Login() {
                                 placeholder="Password"
                             />
                             <div class="absolute left-0 inset-y-0 flex items-center">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    class="h-7 w-7 ml-3 text-gray-400 p-1"
-                                    viewBox="0 0 20 20"
-                                    fill="currentColor"
-                                >
-                                    <path d="M10 2a5 5 0 00-5 5v2a2 2 0 00-2 2v5a2 2 0 002 2h10a2 2 0 002-2v-5a2 2 0 00-2-2H7V7a3 3 0 015.905-.75 1 1 0 001.937-.5A5.002 5.002 0 0010 2z" />
-                                </svg>
+                                <div class="h-7 w-7 ml-3 text-gray-400 p-1">
+                                    <MdLock fontSize={"22px"} />
+                                </div>
                             </div>
                         </div>
                         <div class="mt-4 flex items-center text-gray-300">
