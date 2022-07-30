@@ -52,11 +52,11 @@ export default function Navbar() {
                         <li>
                             <Link to="#">Humor and Satire</Link>
                         </li>
-                        <div className="flex mt-5 ">
+                        <div className="flex mt-5 md:hidden">
                             <input
                                 type="search"
                                 placeholder="Search Here"
-                                class="md:hidden input w-full  shadow-sm shadow-slate-900 rounded-lg"
+                                class=" input w-full  shadow-sm shadow-slate-900 rounded-lg"
                             />
                         </div>
                     </ul>

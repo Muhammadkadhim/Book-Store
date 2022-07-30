@@ -1,10 +1,9 @@
 import { MdEmail, MdLock, MdPerson } from "react-icons/md";
-import { Container } from "../containers";
 import { Link } from "react-router-dom";
 
 export default function Register() {
     return (
-        <Container>
+        <>
             <div class="text-sm breadcrumbs  w-10/12 mx-auto">
                 <ul>
                     <li>
@@ -102,6 +101,6 @@ export default function Register() {
                     </form>
                 </div>
             </div>
-        </Container>
+        </>
     );
 }
