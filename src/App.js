@@ -1,12 +1,17 @@
-import Hero from "./components/Hero";
-import Navbar from "./components/Navbar";
+import { AppContainer } from "./containers";
+import { Home } from "./pages";
+import { Routes, Route } from "react-router-dom";
+import { Layout } from "./components/Layout";
 
 function App() {
     return (
-        <div className="container md:w-10/12 md:mx-auto">
-            <Navbar />
-            <Hero />
-        </div>
+        <AppContainer>
+            <Layout>
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                </Routes>
+            </Layout>
+        </AppContainer>
     );
 }
 
