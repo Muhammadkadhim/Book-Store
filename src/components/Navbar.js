@@ -5,30 +5,30 @@ import { Link } from "react-router-dom";
 export default function Navbar() {
     const [openSearch, setOpenSearch] = useState(false);
     return (
-        <div class="navbar bg-base-100">
-            <div class="navbar-start">
-                <div class="dropdown w-fit">
-                    <label tabindex="0" class="btn btn-ghost btn-circle">
+        <div className="navbar bg-base-100">
+            <div className="navbar-start">
+                <div className="dropdown w-fit">
+                    <label tabIndex="0" className="btn btn-ghost btn-circle">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
-                            class="h-5 w-5"
+                            className="h-5 w-5"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
                         >
                             <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
                                 d="M4 6h16M4 12h16M4 18h7"
                             />
                         </svg>
                     </label>
                     <ul
-                        tabindex="0"
-                        class="menu menu-compact dropdown-content mt-3 p-2 shadow-sm shadow-gray-900 bg-base-100 rounded-box w-52"
+                        tabIndex="0"
+                        className="menu menu-compact dropdown-content mt-3 p-2 shadow-sm shadow-gray-900 bg-base-100 rounded-box w-52"
                     >
-                        <li class="menu-title">
+                        <li className="menu-title">
                             <span>Pages</span>
                         </li>
                         <li>
@@ -38,11 +38,11 @@ export default function Navbar() {
                             <Link to="#">About</Link>
                         </li>
 
-                        <li class="menu-title mt-3">
+                        <li className="menu-title mt-3">
                             <span>Category</span>
                         </li>
                         <li>
-                            <Link to="#">Classics</Link>
+                            <Link to="#">classNameics</Link>
                         </li>
                         <li>
                             <Link to="#">Tragedy</Link>
@@ -66,60 +66,60 @@ export default function Navbar() {
                             <input
                                 type="search"
                                 placeholder="Search Here"
-                                class=" input w-full  shadow-sm shadow-slate-900 rounded-lg"
+                                className=" input w-full  shadow-sm shadow-slate-900 rounded-lg"
                             />
                         </div>
                     </ul>
                 </div>
             </div>
-            <div class="navbar-center">
-                <Link to="/" class="btn btn-ghost normal-case text-xl">
+            <div className="navbar-center">
+                <Link to="/" className="btn btn-ghost normal-case text-xl">
                     BookShop
                 </Link>
             </div>
-            <div class="navbar-end">
+            <div className="navbar-end">
                 <div className="hidden md:flex">
                     <input
                         type="search"
                         placeholder="Search Here"
-                        class={`input w-[300px] max-w-xs shadow-sm shadow-slate-900 rounded-lg  ${
+                        className={`input w-[300px] max-w-xs shadow-sm shadow-slate-900 rounded-lg  ${
                             openSearch ? "" : "hidden"
                         } `}
                     />
                     <button
-                        class="btn btn-ghost btn-circle"
+                        className="btn btn-ghost btn-circle"
                         onClick={() => {
                             setOpenSearch(!openSearch);
                         }}
                     >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
-                            class="h-5 w-5"
+                            className="h-5 w-5"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
                         >
                             <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
                                 d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                             />
                         </svg>
                     </button>
                 </div>
-                <button class="btn btn-ghost btn-circle">
-                    <div class="indicator">
+                <button className="btn btn-ghost btn-circle">
+                    <div className="indicator">
                         <MdOutlineShoppingCart fontSize={"22px"} />
                     </div>
                 </button>
-                <div class="dropdown dropdown-end">
-                    <label tabindex="0" class="btn btn-ghost btn-circle">
+                <div className="dropdown dropdown-end">
+                    <label tabIndex="0" className="btn btn-ghost btn-circle">
                         <MdOutlinePersonOutline fontSize={"24px"} />
                     </label>
                     <ul
-                        tabindex="0"
-                        class="menu menu-compact dropdown-content mt-3 p-2 shadow-sm shadow-gray-900 bg-base-100 rounded-box w-52"
+                        tabIndex="0"
+                        className="menu menu-compact dropdown-content mt-3 p-2 shadow-sm shadow-gray-900 bg-base-100 rounded-box w-52"
                     >
                         <li>
                             <Link to="/login">Login</Link>
