@@ -2,7 +2,7 @@ import { MdEmail, MdLock, MdPerson, MdError } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { registrationSchema } from "./regitrationSchema";
+import { registrationSchema } from "./regitrationSchema.yup";
 
 export default function Register() {
     const {
@@ -13,9 +13,7 @@ export default function Register() {
         resolver: yupResolver(registrationSchema),
     });
 
-    const onSubmit = (data) => {
-        console.log(data);
-    };
+    const onSubmit = (data) => {};
 
     return (
         <>

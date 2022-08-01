@@ -32,7 +32,10 @@ export default function Navbar() {
                             <span>Pages</span>
                         </li>
                         <li>
-                            <Link to="#">Home</Link>
+                            <Link to="/search">Search</Link>
+                        </li>
+                        <li>
+                            <Link to="/">Home</Link>
                         </li>
                         <li>
                             <Link to="#">About</Link>
@@ -62,13 +65,6 @@ export default function Navbar() {
                         <li>
                             <Link to="#">Humor and Satire</Link>
                         </li>
-                        <div className="flex mt-5 md:hidden">
-                            <input
-                                type="search"
-                                placeholder="Search Here"
-                                className=" input w-full  shadow-sm shadow-slate-900 rounded-lg"
-                            />
-                        </div>
                     </ul>
                 </div>
             </div>
@@ -79,19 +75,7 @@ export default function Navbar() {
             </div>
             <div className="navbar-end">
                 <div className="hidden md:flex">
-                    <input
-                        type="search"
-                        placeholder="Search Here"
-                        className={`input w-[300px] max-w-xs shadow-sm shadow-slate-900 rounded-lg  ${
-                            openSearch ? "" : "hidden"
-                        } `}
-                    />
-                    <button
-                        className="btn btn-ghost btn-circle"
-                        onClick={() => {
-                            setOpenSearch(!openSearch);
-                        }}
-                    >
+                    <Link to="/search" className="btn btn-ghost btn-circle">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="h-5 w-5"
@@ -106,7 +90,7 @@ export default function Navbar() {
                                 d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                             />
                         </svg>
-                    </button>
+                    </Link>
                 </div>
                 <button className="btn btn-ghost btn-circle">
                     <div className="indicator">
