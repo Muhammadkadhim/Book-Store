@@ -9,7 +9,7 @@ import {
 } from "react-icons/md";
 
 const Menu = () => {
-    const [menu, setMenu] = useState(false);
+    const [menu, setMenu] = useState(true);
     const [dropdownOpen, setDropdownOpen] = useState(false);
 
     const menuToggler = (e) => {
@@ -68,7 +68,9 @@ const Menu = () => {
                 <div
                     id="drawer-example"
                     className={`${
-                        menu ? "-translate-x-96" : "translate-x-0"
+                        menu
+                            ? "-translate-x-[1000px] opacity-0"
+                            : "translate-x-0 opacity-100"
                     } absolute top-0 left-0 right-0 w-full z-40 h-screen p-4 overflow-y-auto bg-base-100 md:hidden  transition-all duration-500`}
                     tabIndex="-1"
                     aria-labelledby="drawer-label"
