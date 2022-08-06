@@ -19,6 +19,7 @@ export default function Register() {
 
     const onSubmit = (payload) => {
         dispatch(registerAction(payload));
+        localStorage.setItem("user", JSON.stringify(payload));
     };
 
     return (

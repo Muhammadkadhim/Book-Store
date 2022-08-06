@@ -2,12 +2,15 @@ import { MdEmail, MdLock } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { login as loginAction } from "../../redux/userSlice";
+import { useForm } from "react-hook-form";
 
 export default function Login() {
-    const didpatch = useDispatch();
+    const dispatch = useDispatch();
+
+    const { register, handleSubmit } = useForm();
 
     const onSubmit = (payload) => {
-        console.log(payload);
+        dispatch(loginAction(payload));
     };
 
     return (
@@ -59,13 +62,15 @@ export default function Login() {
                     <p className="text-center text-sm text-gray-100 font-light">
                         Or sign in with credentials
                     </p>
-                    <form className="mt-6" onSubmit={() => onSubmit}>
+                    <form className="mt-6" onSubmit={handleSubmit(onSubmit)}>
                         <div className="relative">
                             <input
                                 className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
-                                id="username"
-                                type="text"
+                                id="email"
+                                type="email"
+                                name="email"
                                 placeholder="Email"
+                                {...register("email", { required: true })}
                             />
                             <div className="absolute left-0 inset-y-0 flex items-center">
                                 <div className="h-7 w-7 ml-3 text-gray-400 p-1">
@@ -76,9 +81,11 @@ export default function Login() {
                         <div className="relative mt-3">
                             <input
                                 className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
-                                id="username"
-                                type="text"
+                                id="password"
+                                type="password"
+                                name="password"
                                 placeholder="Password"
+                                {...register("password", { required: true })}
                             />
                             <div className="absolute left-0 inset-y-0 flex items-center">
                                 <div className="h-7 w-7 ml-3 text-gray-400 p-1">

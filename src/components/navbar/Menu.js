@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { pages, categories } from "../../constants/";
 import {
@@ -12,10 +12,11 @@ const Menu = () => {
     const [menu, setMenu] = useState(false);
     const [dropdownOpen, setDropdownOpen] = useState(false);
 
-    const menuToggler = (e) => {
+    const dropdownToggler = (e) => {
         let menu = e.target.nextElementSibling;
         menu.classList.toggle("hidden");
     };
+
     return (
         <>
             <div className="z-50">
@@ -28,7 +29,7 @@ const Menu = () => {
                         {" "}
                         <MdNotes style={{ fontSize: "24px" }} />
                     </button>
-                    <div>
+                    {/* <div>
                         <div className="absolute top-10 hidden group-hover:md:block hover:md:block">
                             <div className="py-3">
                                 <div
@@ -61,7 +62,7 @@ const Menu = () => {
                                 ))}
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
 
                 {/* Mobile menus */}
@@ -71,7 +72,7 @@ const Menu = () => {
                         menu
                             ? "translate-x-0 opacity-100"
                             : "-translate-x-[1000px] opacity-0"
-                    } absolute top-0 left-0 right-0 w-full z-40 h-screen p-4 overflow-y-auto bg-base-100 md:hidden  transition-all duration-500`}
+                    } absolute top-0 left-0 right-0 w-full md:w-96  z-40 h-screen p-4 overflow-y-auto bg-base-100 shadow-2xl   transition-all duration-500`}
                     tabIndex="-1"
                     aria-labelledby="drawer-label"
                 >
@@ -80,7 +81,7 @@ const Menu = () => {
                         data-drawer-dismiss="menu"
                         aria-controls="menu"
                         aria-label="open menu"
-                        className="text-gray-200 bg-transparent   hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                        className="text-gray-200 bg-transparent  hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5 inline-flex items-center"
                         onClick={(e) => {
                             setMenu(!menu);
                         }}
@@ -97,7 +98,7 @@ const Menu = () => {
                                 className=" w-full flex justify-between text-white bg-slate-700  font-medium rounded-lg text-sm px-4 py-2.5 text-center  items-center "
                                 type="button"
                                 onClick={(e) => {
-                                    menuToggler(e);
+                                    dropdownToggler(e);
                                     setDropdownOpen(!dropdownOpen);
                                 }}
                             >
@@ -131,7 +132,7 @@ const Menu = () => {
                                             >
                                                 <Link
                                                     to={`/${page.url}`}
-                                                    className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                                    className="block py-2 px-4 hover:bg-slate-900  focus:bg-slate-900"
                                                 >
                                                     {page.txt}
                                                 </Link>
@@ -155,7 +156,7 @@ const Menu = () => {
                                         className=" w-full flex justify-between text-white bg-slate-700  font-medium rounded-lg text-sm px-4 py-2.5 text-center  items-center "
                                         type="button"
                                         onClick={(e) => {
-                                            menuToggler(e);
+                                            dropdownToggler(e);
                                             setDropdownOpen(!dropdownOpen);
                                         }}
                                     >
@@ -190,7 +191,7 @@ const Menu = () => {
                                                         >
                                                             <Link
                                                                 to={`${sCategory.url}`}
-                                                                className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                                                className="block py-2 px-4 hover:bg-slate-900  focus:bg-slate-900"
                                                             >
                                                                 {sCategory.txt}
                                                             </Link>
