@@ -3,8 +3,12 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { registrationSchema } from "./regitrationSchema.yup";
+import { useDispatch } from "react-redux";
+import { register as registerAction } from "../../redux/userSlice";
 
 export default function Register() {
+    const dispatch = useDispatch();
+
     const {
         register,
         formState: { errors },
@@ -13,7 +17,9 @@ export default function Register() {
         resolver: yupResolver(registrationSchema),
     });
 
-    const onSubmit = (data) => {};
+    const onSubmit = (payload) => {
+        dispatch(registerAction(payload));
+    };
 
     return (
         <>
@@ -71,7 +77,7 @@ export default function Register() {
                                 id="username"
                                 type="text"
                                 placeholder="Username"
-                                {...register("username")}
+                                {...register("username", { required: true })}
                             />
 
                             <div className="absolute left-0 inset-y-0 flex items-center">
@@ -101,7 +107,7 @@ export default function Register() {
                                 id="email"
                                 type="email"
                                 placeholder="Email"
-                                {...register("email")}
+                                {...register("email", { required: true })}
                             />
                             <div className="absolute left-0 inset-y-0 flex items-center">
                                 <div className="absolute left-0 inset-y-0 flex items-center">
@@ -131,7 +137,7 @@ export default function Register() {
                                 id="password"
                                 type="password"
                                 placeholder="Password"
-                                {...register("password")}
+                                {...register("password", { required: true })}
                             />
                             <div className="absolute left-0 inset-y-0 flex items-center">
                                 <div className="h-7 w-7 ml-3 text-gray-400 p-1">

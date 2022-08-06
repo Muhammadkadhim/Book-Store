@@ -1,5 +1,6 @@
 import { Container } from "./containers";
-import { Home, Login, Register } from "./pages";
+import { Home, Register, Login } from "./pages";
+
 import { Routes, Route } from "react-router-dom";
 import { Layout } from "./components/Layout";
 import Search from "./pages/search/Search";

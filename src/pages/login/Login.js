@@ -1,10 +1,18 @@
 import { MdEmail, MdLock } from "react-icons/md";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { login as loginAction } from "../../redux/userSlice";
 
 export default function Login() {
+    const didpatch = useDispatch();
+
+    const onSubmit = (payload) => {
+        console.log(payload);
+    };
+
     return (
         <>
-            <div class="text-sm breadcrumbs w-10/12 mx-auto">
+            <div className="text-sm breadcrumbs w-10/12 mx-auto">
                 <ul>
                     <li>
                         <Link to="/">Home</Link>
@@ -12,17 +20,17 @@ export default function Login() {
                     <li>Login</li>
                 </ul>
             </div>
-            <div class="p-8 lg:w-1/2 mx-auto ">
-                <div class="bg-gray-700 rounded-t-lg p-8">
-                    <p class="text-center text-sm text-gray-400 font-light">
+            <div className="p-8 lg:w-1/2 mx-auto ">
+                <div className="bg-gray-700 rounded-t-lg p-8">
+                    <p className="text-center text-sm text-gray-400 font-light">
                         Sign in with
                     </p>
                     <div>
-                        <div class="flex items-center justify-center space-x-4 mt-3">
-                            <button class="flex items-center py-2 px-4 text-sm uppercase rounded bg-white hover:bg-gray-100 text-indigo-500 border border-transparent hover:border-transparent hover:text-gray-700 shadow-md hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
+                        <div className="flex items-center justify-center space-x-4 mt-3">
+                            <button className="flex items-center py-2 px-4 text-sm uppercase rounded bg-white hover:bg-gray-100 text-indigo-500 border border-transparent hover:border-transparent hover:text-gray-700 shadow-md hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
-                                    class="w-6 h-6 mr-3"
+                                    className="w-6 h-6 mr-3"
                                     viewBox="0 0 48 48"
                                 >
                                     <path
@@ -47,48 +55,48 @@ export default function Login() {
                         </div>
                     </div>
                 </div>
-                <div class="bg-gray-600 rounded-b-lg py-12 px-4 lg:px-24">
-                    <p class="text-center text-sm text-gray-100 font-light">
+                <div className="bg-gray-600 rounded-b-lg py-12 px-4 lg:px-24">
+                    <p className="text-center text-sm text-gray-100 font-light">
                         Or sign in with credentials
                     </p>
-                    <form class="mt-6">
-                        <div class="relative">
+                    <form className="mt-6" onSubmit={() => onSubmit}>
+                        <div className="relative">
                             <input
-                                class="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
+                                className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
                                 id="username"
                                 type="text"
                                 placeholder="Email"
                             />
-                            <div class="absolute left-0 inset-y-0 flex items-center">
-                                <div class="h-7 w-7 ml-3 text-gray-400 p-1">
+                            <div className="absolute left-0 inset-y-0 flex items-center">
+                                <div className="h-7 w-7 ml-3 text-gray-400 p-1">
                                     <MdEmail fontSize={"22px"} />
                                 </div>
                             </div>
                         </div>
-                        <div class="relative mt-3">
+                        <div className="relative mt-3">
                             <input
-                                class="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
+                                className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
                                 id="username"
                                 type="text"
                                 placeholder="Password"
                             />
-                            <div class="absolute left-0 inset-y-0 flex items-center">
-                                <div class="h-7 w-7 ml-3 text-gray-400 p-1">
+                            <div className="absolute left-0 inset-y-0 flex items-center">
+                                <div className="h-7 w-7 ml-3 text-gray-400 p-1">
                                     <MdLock fontSize={"22px"} />
                                 </div>
                             </div>
                         </div>
-                        <div class="mt-4 flex items-center text-gray-300">
+                        <div className="mt-4 flex items-center text-gray-300">
                             <input
                                 type="checkbox"
                                 id="remember"
                                 name="remember"
-                                class="mr-3"
+                                className="mr-3"
                             />
-                            <label for="remember">Remember me</label>
+                            <label htmlFor="remember">Remember me</label>
                         </div>
-                        <div class="flex items-center justify-center mt-8">
-                            <button class="text-white py-2 px-4 uppercase rounded bg-indigo-500 hover:bg-indigo-600 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
+                        <div className="flex items-center justify-center mt-8">
+                            <button className="text-white py-2 px-4 uppercase rounded bg-indigo-500 hover:bg-indigo-600 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
                                 Sign in
                             </button>
                         </div>
