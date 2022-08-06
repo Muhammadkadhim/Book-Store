@@ -9,7 +9,7 @@ import {
 } from "react-icons/md";
 
 const Menu = () => {
-    const [menu, setMenu] = useState(true);
+    const [menu, setMenu] = useState(false);
     const [dropdownOpen, setDropdownOpen] = useState(false);
 
     const menuToggler = (e) => {
@@ -69,8 +69,8 @@ const Menu = () => {
                     id="drawer-example"
                     className={`${
                         menu
-                            ? "-translate-x-[1000px] opacity-0"
-                            : "translate-x-0 opacity-100"
+                            ? "translate-x-0 opacity-100"
+                            : "-translate-x-[1000px] opacity-0"
                     } absolute top-0 left-0 right-0 w-full z-40 h-screen p-4 overflow-y-auto bg-base-100 md:hidden  transition-all duration-500`}
                     tabIndex="-1"
                     aria-labelledby="drawer-label"
@@ -89,6 +89,7 @@ const Menu = () => {
                         <span className="sr-only">Close menu</span>
                     </button>
                     <div className="w-full h-fit py-10  flex flex-col gap-5">
+                        <span className="text-xs text-slate-400">Menu</span>
                         {/* redering pages */}
                         <div className="w-full">
                             <button
@@ -140,6 +141,10 @@ const Menu = () => {
                                 </ul>
                             </div>
                         </div>
+
+                        <span className="text-xs text-slate-400">
+                            Categories
+                        </span>
 
                         {/* redering categories */}
                         {categories.map((category, index) => {
