@@ -5,7 +5,7 @@ import TrendingBook from "./TrendingBook";
 import LoadingBooks from "./LoadingBooks";
 
 export default function Hero() {
-    const [trendingBooks, setTrendingBooks] = useState();
+    const [trendingBooks, setTrendingBooks] = useState([]);
     useEffect(() => {
         axios
             .get("http://openlibrary.org/trending/now.json?limit=5")
@@ -46,7 +46,7 @@ export default function Hero() {
                     </Carousel>
                 </div>
             ) : (
-                <div className="w-11/12 mx-auto md:w-12/12 h-56 md:h-[500px] mt-20 flex items-center">
+                <div className="w-11/12 mx-auto md:w-12/12 h-56 md:h-[500px] mt-20 flex items-center justify-center py-20">
                     <LoadingBooks />
                 </div>
             )}
