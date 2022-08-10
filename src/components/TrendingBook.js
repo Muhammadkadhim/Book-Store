@@ -10,7 +10,7 @@ export default function TrendingBook({ book }) {
     return (
         <Link
             to="/trending"
-            className="px-0 md:px-20 flex gap-5 md:gap-10 items-center  h-full "
+            className="px-0 md:px-20 flex gap-5 md:gap-10 items-center  h-full bg-base-200 rounded-lg"
         >
             <img
                 src={book.cover}
@@ -33,7 +33,7 @@ export default function TrendingBook({ book }) {
                 </div>
                 <button
                     type="button"
-                    class="flex gap-3 items-center text-white bg-gray-800 hover:bg-gray-900 focus:outline-none w-fit rounded-lg px-2 py-2 mt-3 text-xs md:text-sm"
+                    class="flex gap-3 items-center text-white bg-gray-700 hover:bg-gray-900 shadow-md focus:outline-none w-fit rounded-lg px-2 py-2 mt-3 text-xs md:text-sm"
                 >
                     Read more <MdOutlineEast style={{ fontSize: "18px" }} />
                 </button>
