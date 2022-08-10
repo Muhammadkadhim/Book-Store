@@ -4,7 +4,8 @@ import { Home, Register, Login } from "./pages";
 import { Routes, Route } from "react-router-dom";
 import { Layout } from "./components/Layout";
 import Search from "./pages/search/Search";
-
+import { useEffect, useState } from "react";
+import axios from "axios";
 function App() {
     return (
         <Container>

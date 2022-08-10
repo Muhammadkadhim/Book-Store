@@ -71,8 +71,8 @@ const Menu = () => {
                     className={`${
                         menu
                             ? "translate-x-0 opacity-100"
-                            : "-translate-x-[1000px] opacity-0"
-                    } absolute top-0 left-0 right-0 w-full md:w-96  z-40 h-screen p-4 overflow-y-auto bg-base-100 shadow-2xl   transition-all duration-500`}
+                            : "-translate-x-[100%] opacity-0"
+                    }  absolute top-0 left-0 right-0 w-full md:w-96  z-40 h-screen p-4 overflow-y-auto bg-base-100 shadow-2xl   transition-all duration-500`}
                     tabIndex="-1"
                     aria-labelledby="drawer-label"
                 >
@@ -95,7 +95,7 @@ const Menu = () => {
                         <div className="w-full">
                             <button
                                 data-dropdown-toggle="dropdown"
-                                className=" w-full flex justify-between text-white bg-slate-700  font-medium rounded-lg text-sm px-4 py-2.5 text-center  items-center "
+                                className=" w-full flex justify-between text-white bg-base-300  font-medium rounded-lg text-sm px-4 py-2.5 text-center  items-center "
                                 type="button"
                                 onClick={(e) => {
                                     dropdownToggler(e);
@@ -117,7 +117,7 @@ const Menu = () => {
                                     </span>
                                 )}
                             </button>
-                            <div className="hidden mt-2 z-10 w-full text-center bg-slate-700 text-white rounded-lg shadow ">
+                            <div className="hidden mt-2 z-10 w-full text-left bg-base-300 text-slate-200 rounded-lg shadow ">
                                 <ul
                                     className="py-1 text-sm"
                                     aria-labelledby="dropdownDefault"
@@ -153,7 +153,7 @@ const Menu = () => {
                                 <div className="w-full" key={index}>
                                     <button
                                         data-dropdown-toggle="dropdown"
-                                        className=" w-full flex justify-between text-white bg-slate-700  font-medium rounded-lg text-sm px-4 py-2.5 text-center  items-center "
+                                        className=" w-full flex justify-between text-slate-100 bg-base-300  font-medium rounded-lg text-sm px-4 py-2.5 text-center  items-center "
                                         type="button"
                                         onClick={(e) => {
                                             dropdownToggler(e);
@@ -175,7 +175,7 @@ const Menu = () => {
                                             </span>
                                         )}
                                     </button>
-                                    <div className="hidden mt-2 z-10 w-full text-center bg-slate-700 text-white rounded-lg shadow ">
+                                    <div className="hidden mt-2 z-10 w-full text-left bg-base-300 text-slate-200 rounded-lg shadow ">
                                         <ul
                                             className="py-1 text-sm"
                                             aria-labelledby="dropdownDefault"

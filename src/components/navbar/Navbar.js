@@ -4,7 +4,7 @@ import NavLinks from "./Menu";
 
 export default function Navbar() {
     return (
-        <div className="navbar ">
+        <div className="navbar bg-base-100 z-50 fixed top-0 left-0  px-10">
             <div className="navbar-start">
                 <NavLinks />
             </div>
@@ -43,7 +43,7 @@ export default function Navbar() {
                     </label>
                     <ul
                         tabIndex="0"
-                        className="menu menu-compact dropdown-content mt-3 p-2 shadow-sm shadow-gray-900 bg-base-100 rounded-box w-52"
+                        className="menu menu-compact dropdown-content mt-3 p-2 shadow-xl  bg-base-300 rounded-lg w-52"
                     >
                         <li>
                             <Link to="/login">Login</Link>

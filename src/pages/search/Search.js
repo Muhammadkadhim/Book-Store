@@ -1,64 +1,79 @@
-import { useState } from "react";
-import { Dropdown } from "flowbite-react";
+import { useEffect, useState } from "react";
+import { MdSearch } from "react-icons/md";
+import axios from "axios";
+
+import { useForm } from "react-hook-form";
 
 export default function Search() {
-    return (
-        <div className="flex flex-col-reverse md:flex-row items-center justify-center w-10/12 mx-auto mt-20">
-            <Dropdown label="Search by" className="w-2/12">
-                <Dropdown.Item>All</Dropdown.Item>
-                <Dropdown.Item>Title</Dropdown.Item>
-                <Dropdown.Item>Author</Dropdown.Item>
-            </Dropdown>
+    const { register, handleSubmit } = useForm();
+    const [searchRes, setSearchRes] = useState([]);
 
-            <form className="flex items-center md:flex-grow w-full md:w-8/12 mb-4 md:mb-0 md:ml-2">
-                <label for="simple-search" className="sr-only">
-                    Search
-                </label>
-                <div className="relative w-full">
-                    <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-                        <svg
-                            aria-hidden="true"
-                            className="w-5 h-5 text-gray-500 dark:text-gray-400"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <path
-                                fill-rule="evenodd"
-                                d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                                clip-rule="evenodd"
-                            ></path>
-                        </svg>
-                    </div>
-                    <input
-                        type="text"
-                        id="simple-search"
-                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="Search"
-                        required=""
-                    />
-                </div>
-                <button
-                    type="submit"
-                    className="p-2.5 ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+    const getSearchResult = (query) => {
+        axios
+            .get(`http://openlibrary.org/search.json?q=${query}&limit=10`)
+            .then((res) => {
+                setSearchRes(res.data.docs);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+
+    const onSubmit = (data) => {
+        getSearchResult(data.query);
+    };
+
+    console.log(searchRes);
+
+    return (
+        <div className="flex flex-col gap-20 py-10  items-center ">
+            <div className="flex flex-col-reverse md:flex-row items-center justify-center w-10/12 mx-auto mt-20">
+                <form
+                    className="flex items-center md:flex-grow w-full md:w-8/12 mb-4 md:mb-0 md:ml-2"
+                    onSubmit={handleSubmit(onSubmit)}
                 >
-                    <svg
-                        className="w-5 h-5"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
+                    <select
+                        className="select  w-6/12  md:w-2/12 bg-base-300  focus:outline-0   p-2.5"
+                        {...register("select", { required: true })}
                     >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                        ></path>
-                    </svg>
-                    <span className="sr-only">Search</span>
-                </button>
-            </form>
+                        <option value="All">All</option>
+                        <option value="Title">Title</option>
+                        <option value="Author">Author</option>
+                    </select>
+
+                    <label htmlFor="simple-search" className="sr-only">
+                        Search
+                    </label>
+                    <div className="relative w-full">
+                        <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+                            <MdSearch style={{ fontSize: "20px" }} />
+                        </div>
+                        <input
+                            type="text"
+                            id="simple-search"
+                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full pl-10 p-2.5"
+                            placeholder="Search"
+                            autoFocus
+                            name="query"
+                            {...register("query", { required: true })}
+                        />
+                    </div>
+                    <button className="p-2.5 ml-2 text-sm font-medium text-white bg-base-300 h-full hover:bg-black transition ease-out duration-150 rounded-lg focus:outline-none">
+                        <MdSearch style={{ fontSize: "22px" }} />
+                        <span className="sr-only">Search</span>
+                    </button>
+                </form>
+            </div>
+
+            <div className="flex gap-4 flex-wrap justify-center">
+                {searchRes.map((book) => {
+                    return (
+                        <div className="w-44 h-44 bg-white rounded-lg shadow-md flex flex-col justify-center items-center">
+                            <h1>{book.title}</h1>
+                        </div>
+                    );
+                })}
+            </div>
         </div>
     );
 }
