@@ -1,10 +1,10 @@
-import Navbar from "../navbar/Navbar";
+import { Navbar } from "../components";
 
 export default function Layout({ children }) {
     return (
         <>
             <Navbar />
-            <main>{children}</main>
+            <main className="mt-24">{children}</main>
         </>
     );
 }

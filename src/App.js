@@ -1,26 +1,23 @@
 import { Container } from "./containers";
-import { Home, Register, Login } from "./pages";
+import { Home, Register, Login, Search, Category } from "./pages";
 
 import { Routes, Route } from "react-router-dom";
-import { Layout } from "./components/Layout";
-import Search from "./pages/search/Search";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { Layout } from "./Layout";
+import { BookDetail } from "./components";
 function App() {
     return (
         <Container>
             <Layout>
                 <Routes>
                     <Route path="/" element={<Home />} />
-                </Routes>
-                <Routes>
                     <Route path="/search" element={<Search />} />
-                </Routes>
-                <Routes>
                     <Route path="/login" element={<Login />} />
-                </Routes>
-                <Routes>
                     <Route path="/register" element={<Register />} />
+                    <Route path="/category/:category" element={<Category />} />
+                    <Route
+                        path="/category/:category/:work/:bookId"
+                        element={<BookDetail />}
+                    />
                 </Routes>
             </Layout>
         </Container>

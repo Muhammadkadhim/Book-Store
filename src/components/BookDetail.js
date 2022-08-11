@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
+import axios from "axios";
 export default function BookDetail() {
     const { category, bookId } = useParams();
     const [book, setBook] = useState({});

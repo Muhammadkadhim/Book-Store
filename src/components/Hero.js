@@ -24,7 +24,10 @@ export default function Hero() {
                         id: key,
                         title: title,
                         author: author_name,
-                        cover: `https://covers.openlibrary.org/b/id/${cover_i}-L.jpg`,
+                        cover:
+                            cover_i != null
+                                ? `https://covers.openlibrary.org/b/id/${cover_i}-L.jpg`
+                                : undefined,
                         edition_count: edition_count,
                         first_publish_year: first_publish_year,
                         price: Math.floor(Math.random() * (15 - 5 + 1)) + 5,
@@ -39,7 +42,11 @@ export default function Hero() {
         <>
             {trendingBooks ? (
                 <div className="w-11/12 mx-auto md:w-full h-[300px]  md:h-[500px] mt-20 flex justify-center items-center">
-                    <Carousel>
+                    <Carousel
+                        leftControl=" "
+                        rightControl=" "
+                        indicators={false}
+                    >
                         {trendingBooks.map((book) => {
                             return <TrendingBook book={book} />;
                         })}
