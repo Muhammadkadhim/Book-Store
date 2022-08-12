@@ -8,7 +8,7 @@ export default function Hero() {
     const [trendingBooks, setTrendingBooks] = useState([]);
     useEffect(() => {
         axios
-            .get("http://openlibrary.org/trending/now.json?limit=5")
+            .get("http://openlibrary.org/trending/now.json?limit=10")
             .then((data) => {
                 const books = data.data.works.map((work) => {
                     const {

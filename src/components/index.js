@@ -5,5 +5,15 @@ import BookDetail from "./BookDetail";
 import Loading from "./Loading";
 import TrendingBook from "./TrendingBook";
 import Book from "./Book";
+import Footer from "./Footer";
 
-export { Navbar, Hero, Book, BookList, BookDetail, TrendingBook, Loading };
+export {
+    Navbar,
+    Footer,
+    Hero,
+    Book,
+    BookList,
+    BookDetail,
+    TrendingBook,
+    Loading,
+};

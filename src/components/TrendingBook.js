@@ -6,6 +6,7 @@ import {
     MdFavoriteBorder,
     MdOutlineEast,
 } from "react-icons/md";
+import { Tooltip } from "flowbite-react";
 
 export default function TrendingBook({ book }) {
     return (
@@ -30,12 +31,19 @@ export default function TrendingBook({ book }) {
                     ${book.price}
                 </p>
                 <div className="gap-5 mt-3 hidden md:flex">
-                    <button className="hover:text-orange-300 transition ease-in-out duration-150">
-                        <MdOutlineShoppingCart style={{ fontSize: "24px" }} />
-                    </button>
-                    <button className="hover:text-orange-300 transition ease-in-out duration-150">
-                        <MdFavoriteBorder style={{ fontSize: "24px" }} />
-                    </button>
+                    <Tooltip content="Add to Cart">
+                        <button className="text-orange-300">
+                            <MdOutlineShoppingCart
+                                style={{ fontSize: "24px" }}
+                            />
+                        </button>
+                    </Tooltip>
+
+                    <Tooltip content="Add to Favorites">
+                        <button className="text-orange-300">
+                            <MdFavoriteBorder style={{ fontSize: "24px" }} />
+                        </button>
+                    </Tooltip>
                 </div>
                 <Link
                     to={`/trending${book.id}`}

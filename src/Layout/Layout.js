@@ -1,10 +1,11 @@
-import { Navbar } from "../components";
+import { Navbar, Footer } from "../components";
 
 export default function Layout({ children }) {
     return (
         <>
             <Navbar />
-            <main className="mt-24">{children}</main>
+            <main className="my-24">{children}</main>
+            <Footer />
         </>
     );
 }
