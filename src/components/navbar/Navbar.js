@@ -10,7 +10,7 @@ export default function Navbar() {
             </div>
             <div className="navbar-center">
                 <Link to="/" className="btn btn-ghost normal-case text-xl">
-                    BokoShop
+                    KitabStore
                 </Link>
             </div>
             <div className="navbar-end">
