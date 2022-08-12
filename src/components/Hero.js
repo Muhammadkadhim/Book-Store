@@ -47,8 +47,8 @@ export default function Hero() {
                         rightControl=" "
                         indicators={false}
                     >
-                        {trendingBooks.map((book) => {
-                            return <TrendingBook book={book} />;
+                        {trendingBooks.map((book, index) => {
+                            return <TrendingBook book={book} key={index} />;
                         })}
                     </Carousel>
                 </div>

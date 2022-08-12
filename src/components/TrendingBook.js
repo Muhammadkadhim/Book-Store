@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import cover_not_found from "../assets/cover_not_found.svg";
 import {
     MdOutlineShoppingCart,
     MdFavoriteBorder,
@@ -16,9 +17,11 @@ export default function TrendingBook({ book }) {
                     className="w-32 h-52 md:w-52 md:h-72 object-contain rounded-lg"
                 />
             ) : (
-                <div className="w-32 h-52 md:w-52 md:h-72 object-fill rounded-lg border grid place-content-center">
-                    <h1 className="text-orange-400 text-sm">{book.title}</h1>
-                </div>
+                <img
+                    src={cover_not_found}
+                    alt={book.title}
+                    className="w-32 h-52 md:w-52 md:h-72 object-contain rounded-lg"
+                />
             )}
             <div className="self-start mt-12 md:mt-32 flex flex-col gap-3">
                 <h3 className="text-xs md:text-md">{book.author}</h3>
