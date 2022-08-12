@@ -3,14 +3,14 @@ export const categories = [
         title: "Arts",
         url: "/arts",
         subCategory: [
-            { txt: "Architecture", url: "/category/architecture" },
-            { txt: "Art Instruction", url: "/category/art_instruction" },
-            { txt: "Art History", url: "/category/art_history" },
-            { txt: "Dance", url: "/category/dance" },
-            { txt: "Design", url: "/category/design" },
-            { txt: "Fasion", url: "/category/fasion" },
-            { txt: "Film", url: "/category/film" },
-            { txt: "Music", url: "/category/music" },
+            { txt: "Architecture", url: "/art/architecture" },
+            { txt: "Art Instruction", url: "/art/art_instruction" },
+            { txt: "Art History", url: "/art/art_history" },
+            { txt: "Dance", url: "/art/dance" },
+            { txt: "Design", url: "/art/design" },
+            { txt: "Fasion", url: "/art/fasion" },
+            { txt: "Film", url: "/art/film" },
+            { txt: "Music", url: "/art/music" },
         ],
     },
     {
@@ -46,7 +46,7 @@ export const categories = [
             },
             {
                 txt: "Business Econimics",
-                url: "/business_and_finance/business_econimics",
+                url: "/business_and_finance/business_economics",
             },
             {
                 txt: "Business Success",

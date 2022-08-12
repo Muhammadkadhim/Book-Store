@@ -1,5 +1,5 @@
 import { Container } from "./containers";
-import { Home, Register, Login, Search, Category } from "./pages";
+import { Home, Register, Login, Search, Books } from "./pages";
 
 import { Routes, Route } from "react-router-dom";
 import { Layout } from "./Layout";
@@ -13,9 +13,14 @@ function App() {
                     <Route path="/search" element={<Search />} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
-                    <Route path="/category/:category" element={<Category />} />
+
+                    <Route path="/:category/:subCategory" element={<Books />} />
                     <Route
-                        path="/category/:category/:work/:bookId"
+                        path="/:category/works/:bookId"
+                        element={<BookDetail />}
+                    />
+                    <Route
+                        path="/:category/:subCategory/works/:bookId"
                         element={<BookDetail />}
                     />
                 </Routes>
