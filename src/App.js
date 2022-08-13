@@ -1,9 +1,10 @@
 import { Container } from "./containers";
 import { Home, Register, Login, Search, Books } from "./pages";
 
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate, useParams } from "react-router-dom";
 import { Layout } from "./Layout";
 import { BookDetail } from "./components";
+
 function App() {
     return (
         <Container>
@@ -14,13 +15,9 @@ function App() {
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
 
-                    <Route path="/:category/:subCategory" element={<Books />} />
+                    <Route path="/:category" element={<Books />} />
                     <Route
                         path="/:category/works/:bookId"
-                        element={<BookDetail />}
-                    />
-                    <Route
-                        path="/:category/:subCategory/works/:bookId"
                         element={<BookDetail />}
                     />
                 </Routes>

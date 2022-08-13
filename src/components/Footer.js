@@ -89,10 +89,10 @@ export default function Footer() {
                             <div className="flex flex-wrap justify-between md:flex-row">
                                 <input
                                     type="email"
-                                    className="m-1 p-2 appearance-none text-base-300 text-sm focus:outline-none rounded-md"
+                                    className="m-1 p-1 appearance-none text-base-300 text-sm focus:outline-none rounded-md"
                                     placeholder="Enter your email"
                                 />
-                                <button className="w-full m-1 p-2 text-sm bg-base-200 hover:bg-base-300 text-orange-300 rounded-lg font-semibold uppercase lg:w-auto">
+                                <button className="w-full m-1 p-1 text-sm bg-base-200 hover:bg-base-300 text-orange-300 rounded-lg font-semibold uppercase lg:w-auto">
                                     subscribe
                                 </button>
                             </div>

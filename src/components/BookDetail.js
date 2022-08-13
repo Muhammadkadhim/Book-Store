@@ -9,14 +9,13 @@ import cover_not_found from "../assets/cover_not_found.svg";
 import { Loading } from "./";
 
 export default function BookDetail() {
-    const { category, subCategory, bookId } = useParams();
+    const { category, bookId } = useParams();
     const [book, setBook] = useState();
 
     useEffect(() => {
         axios
             .get(`https://openlibrary.org/works/${bookId}.json`)
             .then((data) => {
-                console.log(data.data);
                 let authors = [];
                 data.data.authors.forEach((author) => {
                     axios
@@ -27,6 +26,16 @@ export default function BookDetail() {
                         .catch((err) => console.log(err));
                 });
 
+                let description = "";
+                if (data.data.description) {
+                    if (typeof data.data.description === "string") {
+                        description = data.data.description;
+                    } else {
+                        description = data.data.description.value;
+                    }
+                } else {
+                    description = "No Description Found";
+                }
                 // getting general data
                 setBook({
                     id: data.data.key,
@@ -35,9 +44,7 @@ export default function BookDetail() {
                     cover: data.data.covers
                         ? `https://covers.openlibrary.org/b/id/${data.data.covers[0]}-L.jpg`
                         : undefined,
-                    description: data.data.description
-                        ? data.data.description.value
-                        : "No description found",
+                    description: description,
                     subjects: data.data.subjects
                         ? data.data.subjects.join(",")
                         : "No subjects found",
@@ -46,7 +53,6 @@ export default function BookDetail() {
             })
             .catch((err) => console.log(err));
     }, [bookId]);
-
     return (
         <>
             <div className="text-sm breadcrumbs  w-9/12 md:w-11/12 mx-auto">
@@ -54,17 +60,14 @@ export default function BookDetail() {
                     <li>
                         <Link to="/">Home</Link>
                     </li>
-                    <li>{category}</li>
-                    {subCategory ? (
-                        <li>
-                            <Link to={`/category/${subCategory}`}>
-                                {subCategory}
-                            </Link>
-                        </li>
-                    ) : (
-                        ""
-                    )}
-
+                    <li>
+                        {category === "Comics" ||
+                        category === "New Arrivals" ? (
+                            category
+                        ) : (
+                            <Link to={`/${category}`}>{category}</Link>
+                        )}
+                    </li>
                     <li>{book ? book.title : ""}</li>
                 </ul>
             </div>
@@ -93,6 +96,17 @@ export default function BookDetail() {
                                     <h1 className="text-slate-100 text-2xl title-font font-medium mb-1">
                                         {book.title}
                                     </h1>
+                                    <p className="text-xs text-gray-400">
+                                        {" "}
+                                        by:
+                                        {book.authors.map((author, index) => {
+                                            return (
+                                                <span key={index}>
+                                                    {author}
+                                                </span>
+                                            );
+                                        })}
+                                    </p>
                                     <hr className="my-5" />
                                     <h2 className="text-sm title-font text-orange-400 tracking-widest">
                                         Description:

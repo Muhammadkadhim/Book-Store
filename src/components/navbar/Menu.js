@@ -29,43 +29,7 @@ const Menu = () => {
                         {" "}
                         <MdNotes style={{ fontSize: "24px" }} />
                     </button>
-                    {/* <div>
-                        <div className="absolute top-10 hidden group-hover:md:block hover:md:block">
-                            <div className="py-3">
-                                <div
-                                    className="w-4 h-4 left-3 absolute 
-                                        mt-1 bg-base-300 rotate-45"
-                                ></div>
-                            </div>
-                            <div className=" bg-base-300 p-5 grid grid-cols-4 gap-10 rounded-lg">
-                                {categories.map((category, index) => (
-                                    <div key={index}>
-                                        <h1 className="text-md font-semibold text-slate-100">
-                                            {category.title}
-                                        </h1>
-                                        {category.subCategory.map(
-                                            (sCategory, index) => (
-                                                <li
-                                                    className="text-sm text-gray-200 my-2.5"
-                                                    key={index}
-                                                >
-                                                    <Link
-                                                        to={sCategory.url}
-                                                        className="hover:text-blue-400"
-                                                    >
-                                                        {sCategory.txt}
-                                                    </Link>
-                                                </li>
-                                            )
-                                        )}
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </div> */}
                 </div>
-
-                {/* Mobile menus */}
                 <div
                     id="drawer-example"
                     className={`${

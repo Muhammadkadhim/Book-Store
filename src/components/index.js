@@ -6,6 +6,11 @@ import Loading from "./Loading";
 import TrendingBook from "./TrendingBook";
 import Book from "./Book";
 import Footer from "./Footer";
+import NewArrivals from "./NewArrivals";
+import Comics from "./Comics";
+import BestSellers from "./BestSellers";
+import Special from "./Special";
+import Slider from "./Slider";
 
 export {
     Navbar,
@@ -16,4 +21,9 @@ export {
     BookDetail,
     TrendingBook,
     Loading,
+    NewArrivals,
+    Comics,
+    BestSellers,
+    Special,
+    Slider,
 };

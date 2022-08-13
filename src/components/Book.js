@@ -12,9 +12,7 @@ export default function Book(props) {
             key={props.index}
         >
             {props.book.cover ? (
-                <Link
-                    to={`/${props.category}/${props.subCategory}${props.book.id}`}
-                >
+                <Link to={`/${props.category}${props.book.id}`}>
                     <img
                         src={props.book.cover}
                         alt={props.book.title}
@@ -23,7 +21,7 @@ export default function Book(props) {
                 </Link>
             ) : (
                 <Link
-                    to={`/${props.category}/${props.subCategory}${props.book.id}`}
+                    to={`/${props.category}/${props.book.id}`}
                     className="h-[200px] rounded-lg w-full bg-base-300 grid place-content-center"
                 >
                     <img

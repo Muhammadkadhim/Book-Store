@@ -8,8 +8,8 @@ import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from "react-icons/md";
 import ReactPaginate from "react-paginate";
 
 export default function Books() {
-    const { category, subCategory } = useParams();
-    const [books, setBooks] = useState([]);
+    const { category } = useParams();
+    const [books, setBooks] = useState();
 
     // pagination
     const [currentBooks, setCurrentBooks] = useState(null);
@@ -21,7 +21,7 @@ export default function Books() {
         let limit = Math.floor(Math.random() * (50 - 25 + 1)) + 25;
         axios
             .get(
-                `https://openlibrary.org/subjects/${subCategory}.json?limit=${limit}`
+                `https://openlibrary.org/subjects/${category}.json?limit=${limit}`
             )
             .then((data) => {
                 const books = data.data.works.map((work) => {
@@ -44,13 +44,15 @@ export default function Books() {
                 setBooks(books);
             })
             .catch((err) => console.log(err));
-    }, [category, subCategory]);
+    }, [category]);
 
     // pagination
     useEffect(() => {
-        const endOffset = itemOffset + itemsPerPage;
-        setCurrentBooks(books.slice(itemOffset, endOffset));
-        setPageCount(Math.ceil(books.length / itemsPerPage));
+        if (books) {
+            const endOffset = itemOffset + itemsPerPage;
+            setCurrentBooks(books.slice(itemOffset, endOffset));
+            setPageCount(Math.ceil(books.length / itemsPerPage));
+        }
     }, [itemsPerPage, itemOffset, books]);
 
     const handlePageClick = (event) => {
@@ -66,17 +68,12 @@ export default function Books() {
                         <Link to="/">Home</Link>
                     </li>
                     <li>{category}</li>
-                    <li>{subCategory}</li>
                 </ul>
             </div>
             <div className=" flex flex-wrap items-center justify-center my-10">
                 {books ? (
                     <div className="flex flex-col gap-24 items-center ">
-                        <BookList
-                            books={currentBooks}
-                            category={category}
-                            subCategory={subCategory}
-                        />
+                        <BookList books={currentBooks} category={category} />
                         <ReactPaginate
                             nextLabel={
                                 <button
