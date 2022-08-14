@@ -1,5 +1,6 @@
 import { FiTwitter, FiFacebook, FiInstagram } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import { CookieBanner } from "./";
 export default function Footer() {
     return (
         <footer className="bg-base-200 dark:bg-gray-900 rounded-t-lg">
@@ -130,6 +131,7 @@ export default function Footer() {
                     </Link>
                 </div>
             </div>
+            <CookieBanner />
         </footer>
     );
 }
