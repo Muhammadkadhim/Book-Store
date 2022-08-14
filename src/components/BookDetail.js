@@ -5,7 +5,7 @@ import { MdFavoriteBorder, MdOutlineShoppingCart } from "react-icons/md";
 import { Tooltip } from "flowbite-react";
 import { delimiter } from "../utils/delimiter";
 
-import cover_not_found from "../assets/cover_not_found.svg";
+import { cover_not_found } from "../assets";
 import { Loading } from "./";
 
 export default function BookDetail() {

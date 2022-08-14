@@ -2,18 +2,18 @@ import { Slider } from "../components";
 import { testimonials } from "../constants";
 export default function Testimonials() {
     return (
-        <>
-            <div class="my-6 text-center  w-10/12 mx-auto">
+        <div className="w-11/12 md:w-12/12 mx-auto flex flex-col gap-5">
+            <div class="my-6 text-center  w-full flex flex-col gap-5">
                 <h2 class="text-4xl font-bold text-orange-400">Testimonials</h2>
-                <p class="text-lg text-gray-300">
-                    What our customers say about us
+                <p class="text-sm text-gray-400">
+                    What do our customers say about us
                 </p>
             </div>
             <Slider>
                 {testimonials.map((testimonial, index) => {
                     return (
                         <div
-                            class="p-4 rounded-lg shadow-md bg-base-300 w-56 lg:w-60 h-80 md:w-56"
+                            class="p-4 rounded-lg shadow-md bg-base-300 md:w-52 h-72"
                             key={index}
                         >
                             <div class="mb-2">
@@ -29,7 +29,7 @@ export default function Testimonials() {
                                         {testimonial.name}
                                     </h5>
                                     <span className="h-[.04rem] w-24 bg-gray-600 my-3"></span>
-                                    <p class="mb-2 text-center text-gray-100 ">
+                                    <p class="mb-2 text-center text-sm tracking-wide text-gray-100 ">
                                         " {testimonial.speech}"
                                     </p>
                                 </div>
@@ -38,6 +38,6 @@ export default function Testimonials() {
                     );
                 })}
             </Slider>
-        </>
+        </div>
     );
 }

@@ -4,7 +4,7 @@ import NavLinks from "./Menu";
 
 export default function Navbar() {
     return (
-        <div className="navbar bg-base-100 z-50 fixed top-0 left-0  px-10">
+        <div className="navbar bg-base-100 z-50 fixed top-0 left-0  px-5">
             <div className="navbar-start">
                 <NavLinks />
             </div>

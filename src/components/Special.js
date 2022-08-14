@@ -30,13 +30,13 @@ export default function Special() {
     }, []);
 
     return (
-        <div className=" w-11/12 mx-auto  flex flex-col gap-10 text-center">
+        <div className="w-full flex flex-col gap-10 text-center">
             <h1 className="text-orange-200 text-2xl uppercase">
                 Special Offer
             </h1>
 
             {special ? (
-                <div className="w-10/12 mx-auto h-full px-5 py-10 rounded-md bg-base-300 flex flex-col md:flex-row  gap-10">
+                <div className="w-11/12 mx-auto md:w-full h-full lg:px-20 px-5  py-10 rounded-lg bg-base-300 flex flex-col md:flex-row  gap-10">
                     <img
                         src={special.cover}
                         alt={special.title}
@@ -44,7 +44,7 @@ export default function Special() {
                     />
                     <div className="flex flex-col gap-5 items-center md:items-start text-left">
                         <h1 className="text-2xl text-white">{special.title}</h1>
-                        <p className="text-sm text-gray-300">
+                        <p className="text-sm text-gray-300 md:w-10/12 lg:w-8/12 text-center md:text-left">
                             {delimiter(special.description, 300)}
                         </p>
                         <p className="text-xl text-orange-500 flex items-center ">

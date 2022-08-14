@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { CookieBanner } from "./";
 export default function Footer() {
     return (
-        <footer className="bg-base-200 dark:bg-gray-900 rounded-t-lg">
+        <footer className="w-11/12 mx-auto bg-base-200 dark:bg-gray-900 rounded-t-lg">
             <div className="grid grid-cols-2 gap-8 py-8 px-6 md:grid-cols-4">
                 <div>
                     <h2 className="mb-6 text-sm font-semibold text-slate-100 uppercase dark:text-gray-400">

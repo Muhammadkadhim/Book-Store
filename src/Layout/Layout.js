@@ -1,4 +1,4 @@
-import { Navbar, Footer, CookieBanner } from "../components";
+import { Navbar, Footer } from "../components";
 
 export default function Layout({ children }) {
     return (

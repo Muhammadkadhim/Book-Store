@@ -7,23 +7,18 @@ import "swiper/css/free-mode";
 
 export default function Slider({ children }) {
     return (
-        <div className="w-full  mx-auto pl-20 md:pl-0">
+        <div className="w-full ">
             <Swiper
                 freeMode={FreeMode}
                 grabCursor={true}
                 modules={[FreeMode, Autoplay]}
                 autoplay={{ delay: 2000 }}
                 className="mySwiper"
-                slidesPerView={5}
-                spaceBetween={50}
+                slidesPerView={1}
                 breakpoints={{
-                    0: {
-                        slidesPerView: 1,
-                        spaceBetween: 10,
-                    },
-                    480: {
+                    640: {
                         slidesPerView: 2,
-                        spaceBetween: 15,
+                        spaceBetween: 10,
                     },
                     768: {
                         slidesPerView: 3,
@@ -31,9 +26,9 @@ export default function Slider({ children }) {
                     },
                     1024: {
                         slidesPerView: 4,
-                        spaceBetween: 10,
+                        spaceBetween: 20,
                     },
-                    1200: {
+                    1400: {
                         slidesPerView: 5,
                         spaceBetween: 10,
                     },

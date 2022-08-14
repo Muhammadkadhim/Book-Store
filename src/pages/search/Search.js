@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { MdSearch } from "react-icons/md";
 import axios from "axios";
 
