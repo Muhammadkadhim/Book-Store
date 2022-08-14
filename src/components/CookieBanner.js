@@ -19,7 +19,7 @@ export default function CookieBanner() {
             id="cookieBanner"
         >
             <div class="w-12/12 mx-auto bg-white fixed inset-x-5 p-5 bottom-0 z-50 rounded-lg drop-shadow-2xl flex gap-4 flex-wrap md:flex-nowrap text-center md:text-left items-center justify-center md:justify-between">
-                <div class="w-full">
+                <div class="w-full text-gray-500">
                     This website uses cookies to ensure you get the best
                     experience on our website.
                     <Link
