@@ -1,6 +1,6 @@
 import Home from "./Home";
 import About from "./About";
-import Contact from "./Contact";
+import Contact from "./contact/Contact";
 import Login from "./login/Login";
 import Register from "./register/Register";
 import Search from "./search/Search";

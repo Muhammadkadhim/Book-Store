@@ -1,31 +1,50 @@
 import React, { useRef } from "react";
 import emailjs from "@emailjs/browser";
-
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { contactSchema } from "./contactSchema.yup";
 import {
     MdOutlineHome,
     MdOutlineEmail,
     MdStayPrimaryPortrait,
+    MdError,
 } from "react-icons/md";
+import { Spinner } from "flowbite-react";
 
 export default function Contact() {
     const form = useRef();
+
+    const {
+        register,
+        formState: { errors },
+        handleSubmit,
+    } = useForm({
+        resolver: yupResolver(contactSchema),
+    });
 
     const SERVICE_ID = process.env.REACT_APP_SERVICE_ID;
     const TEMPLATE_ID = process.env.REACT_APP_TEMPLATE_ID;
     const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
 
-    const sendEmail = (e) => {
-        e.preventDefault();
+    const onSubmit = (e) => {
+        document.getElementById("spinner").classList.remove("hidden");
         emailjs
             .sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY)
             .then(
                 (result) => {
-                    console.log(result.text);
+                    document.getElementById("spinner").classList.add("hidden");
+                    document
+                        .getElementById("message")
+                        .classList.remove("hidden");
                 },
                 (error) => {
                     console.log(error.text);
                 }
             );
+
+        setTimeout(() => {
+            document.getElementById("message").classList.add("hidden");
+        }, 5000);
     };
     return (
         <section className=" py-20 lg:py-[120px] overflow-hidden relative z-10 w-10/12 md:w-11/12 mx-auto">
@@ -42,7 +61,7 @@ export default function Contact() {
                           mb-6
                           uppercase
                           font-bold
-                          text-[30px]
+                          text-[26px]
                           sm:text-[40px]
                           lg:text-[36px]
                           xl:text-[40px]
@@ -52,9 +71,7 @@ export default function Contact() {
                             </h2>
                             <p className="text-base text-slate-200 leading-relaxed mb-9">
                                 Lorem ipsum dolor sit amet, consectetur
-                                adipiscing elit, sed do eius tempor incididunt
-                                ut labore et dolore magna aliqua. Ut enim adiqua
-                                minim veniam quis nostrud exercitation ullamco
+                                adipiscing elit, sed do eius tempor incididunt.
                             </p>
                             <div className="flex mb-8 max-w-[370px] w-full">
                                 <div
@@ -154,72 +171,138 @@ export default function Contact() {
                     </div>
                     <div className="w-full lg:w-1/2 xl:w-5/12 px-4">
                         <div className="bg-white relative rounded-lg p-8 sm:p-12 shadow-lg">
-                            <form ref={form} onSubmit={sendEmail}>
-                                <div className="mb-6">
+                            <form ref={form} onSubmit={handleSubmit(onSubmit)}>
+                                <div className="mb-6 relative">
                                     <input
                                         type="text"
                                         name="name"
                                         placeholder="Your Name"
+                                        {...register("name", {
+                                            required: true,
+                                        })}
                                         className="
                                 w-full
                                 rounded
                                 py-3
                                 px-[14px]
-                                text-body-color text-base
+                                text-body-color text-base-100
                                 border border-[f0f0f0]
                                 outline-none
                                 focus-visible:shadow-none
                                 focus:border-primary
                                 "
                                     />
+                                    <div className="absolute right-0 inset-y-0 flex items-center">
+                                        <div className="h-7 w-7 mr-3 text-gray-400 p-1">
+                                            {errors.name ? (
+                                                <div
+                                                    className="tooltip tooltip-left text-yellow-300"
+                                                    data-tip={
+                                                        errors.name?.message
+                                                    }
+                                                >
+                                                    <MdError
+                                                        fontSize={"22px"}
+                                                    />
+                                                </div>
+                                            ) : (
+                                                ""
+                                            )}
+                                        </div>
+                                    </div>
                                 </div>
-                                <div className="mb-6">
+                                <div className="mb-6 relative">
                                     <input
                                         type="email"
                                         name="email"
                                         placeholder="Your Email"
+                                        {...register("email", {
+                                            required: true,
+                                        })}
                                         className="
                                 w-full
                                 rounded
                                 py-3
                                 px-[14px]
-                                text-body-color text-base
+                                text-body-color text-base-100
                                 border border-[f0f0f0]
                                 outline-none
                                 focus-visible:shadow-none
                                 focus:border-primary
                                 "
                                     />
+                                    <div className="absolute right-0 inset-y-0 flex items-center">
+                                        <div className="h-7 w-7 mr-3 text-gray-400 p-1">
+                                            {errors.email ? (
+                                                <div
+                                                    className="tooltip tooltip-left text-yellow-300"
+                                                    data-tip={
+                                                        errors.email?.message
+                                                    }
+                                                >
+                                                    <MdError
+                                                        fontSize={"22px"}
+                                                    />
+                                                </div>
+                                            ) : (
+                                                ""
+                                            )}
+                                        </div>
+                                    </div>
                                 </div>
-                                <div className="mb-6">
+                                <div className="mb-6 relative">
                                     <input
                                         name="phone"
                                         type="text"
                                         placeholder="Your Phone"
+                                        {...register("phone", {
+                                            required: true,
+                                        })}
                                         className="
                                 w-full
                                 rounded
                                 py-3
                                 px-[14px]
-                                text-body-color text-base
+                                text-body-color text-base-100
                                 border border-[f0f0f0]
                                 outline-none
                                 focus-visible:shadow-none
                                 focus:border-primary
                                 "
                                     />
+                                    <div className="absolute right-0 inset-y-0 flex items-center">
+                                        <div className="h-7 w-7 mr-3 text-gray-400 p-1">
+                                            {errors.phone ? (
+                                                <div
+                                                    className="tooltip tooltip-left text-yellow-300"
+                                                    data-tip={
+                                                        errors.phone?.message
+                                                    }
+                                                >
+                                                    <MdError
+                                                        fontSize={"22px"}
+                                                    />
+                                                </div>
+                                            ) : (
+                                                ""
+                                            )}
+                                        </div>
+                                    </div>
                                 </div>
-                                <div className="mb-6">
+                                <div className="mb-6 relative">
                                     <textarea
                                         rows="6"
                                         name="message"
                                         placeholder="Your Message"
+                                        {...register("message", {
+                                            required: true,
+                                        })}
                                         className="
                                 w-full
                                 rounded
                                 py-3
                                 px-[14px]
-                                text-body-color text-base
+                                text-body-color text-base-100
                                 border border-[f0f0f0]
                                 resize-none
                                 outline-none
@@ -227,13 +310,31 @@ export default function Contact() {
                                 focus:border-primary
                                 "
                                     ></textarea>
+                                    <div className="absolute right-0 inset-y-0 flex items-center">
+                                        <div className="h-7 w-7 mr-3 text-gray-400 p-1">
+                                            {errors.message ? (
+                                                <div
+                                                    className="tooltip tooltip-left text-yellow-300"
+                                                    data-tip={
+                                                        errors.message?.message
+                                                    }
+                                                >
+                                                    <MdError
+                                                        fontSize={"22px"}
+                                                    />
+                                                </div>
+                                            ) : (
+                                                ""
+                                            )}
+                                        </div>
+                                    </div>
                                 </div>
-                                <div>
+                                <div className="text-center">
                                     <button
                                         className="
                                 w-full
                                 text-white
-                                bg-primary
+                                bg-base-300
                                 rounded
                                 border border-primary
                                 p-3
@@ -243,6 +344,18 @@ export default function Contact() {
                                     >
                                         Send Message
                                     </button>
+                                    <div className="hidden mt-4" id="spinner">
+                                        <Spinner
+                                            color="success"
+                                            aria-label="message is on its way"
+                                        />
+                                    </div>
+                                    <p
+                                        className="mt-4 text-green-500 hidden"
+                                        id="message"
+                                    >
+                                        Your Message has been sent
+                                    </p>
                                 </div>
                             </form>
                             <div>
