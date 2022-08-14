@@ -11,6 +11,7 @@ import Comics from "./Comics";
 import BestSellers from "./BestSellers";
 import Special from "./Special";
 import Slider from "./Slider";
+import Testimonials from "./Testimonials";
 
 export {
     Navbar,
@@ -26,4 +27,5 @@ export {
     BestSellers,
     Special,
     Slider,
+    Testimonials,
 };
