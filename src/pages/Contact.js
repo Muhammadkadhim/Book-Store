@@ -1,3 +1,6 @@
+import React, { useRef } from "react";
+import emailjs from "@emailjs/browser";
+
 import {
     MdOutlineHome,
     MdOutlineEmail,
@@ -5,6 +8,25 @@ import {
 } from "react-icons/md";
 
 export default function Contact() {
+    const form = useRef();
+
+    const SERVICE_ID = process.env.REACT_APP_SERVICE_ID;
+    const TEMPLATE_ID = process.env.REACT_APP_TEMPLATE_ID;
+    const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
+
+    const sendEmail = (e) => {
+        e.preventDefault();
+        emailjs
+            .sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY)
+            .then(
+                (result) => {
+                    console.log(result.text);
+                },
+                (error) => {
+                    console.log(error.text);
+                }
+            );
+    };
     return (
         <section className=" py-20 lg:py-[120px] overflow-hidden relative z-10 w-10/12 md:w-11/12 mx-auto">
             <div className="container">
@@ -132,10 +154,11 @@ export default function Contact() {
                     </div>
                     <div className="w-full lg:w-1/2 xl:w-5/12 px-4">
                         <div className="bg-white relative rounded-lg p-8 sm:p-12 shadow-lg">
-                            <form>
+                            <form ref={form} onSubmit={sendEmail}>
                                 <div className="mb-6">
                                     <input
                                         type="text"
+                                        name="name"
                                         placeholder="Your Name"
                                         className="
                                 w-full
@@ -153,6 +176,7 @@ export default function Contact() {
                                 <div className="mb-6">
                                     <input
                                         type="email"
+                                        name="email"
                                         placeholder="Your Email"
                                         className="
                                 w-full
@@ -169,6 +193,7 @@ export default function Contact() {
                                 </div>
                                 <div className="mb-6">
                                     <input
+                                        name="phone"
                                         type="text"
                                         placeholder="Your Phone"
                                         className="
@@ -187,6 +212,7 @@ export default function Contact() {
                                 <div className="mb-6">
                                     <textarea
                                         rows="6"
+                                        name="message"
                                         placeholder="Your Message"
                                         className="
                                 w-full
@@ -204,7 +230,6 @@ export default function Contact() {
                                 </div>
                                 <div>
                                     <button
-                                        type="submit"
                                         className="
                                 w-full
                                 text-white
