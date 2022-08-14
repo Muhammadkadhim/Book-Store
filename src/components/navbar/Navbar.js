@@ -1,7 +1,7 @@
 import { MdOutlinePersonOutline, MdOutlineShoppingCart } from "react-icons/md";
 import { Link } from "react-router-dom";
 import NavLinks from "./Menu";
-
+import { logo } from "../../assets/";
 export default function Navbar() {
     return (
         <div className="navbar bg-base-100 z-50 fixed top-0 left-0  px-5">
@@ -9,7 +9,11 @@ export default function Navbar() {
                 <NavLinks />
             </div>
             <div className="navbar-center">
-                <Link to="/" className="btn btn-ghost normal-case text-xl">
+                <Link
+                    to="/"
+                    className="btn btn-ghost normal-case text-xl flex gap-2"
+                >
+                    <img src={logo} alt="logo" className="w-6 object-contain" />
                     KitabStore
                 </Link>
             </div>

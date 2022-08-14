@@ -1,5 +1,6 @@
 import bookstore from "./bookstore.png";
 import cover_not_found from "./cover_not_found.svg";
+import logo from "./logo.svg";
 
 // testimonials
 import user1 from "./testimonials/user1.jpg";
@@ -13,6 +14,7 @@ import user7 from "./testimonials/user7.jpg";
 export {
     bookstore,
     cover_not_found,
+    logo,
     user1,
     user2,
     user3,
