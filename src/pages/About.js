@@ -28,15 +28,15 @@ export default function About() {
                 />
             </div>
 
-            <div className="h-96 w-full flex flex-col justify-center gap-5 text-center">
+            <div className="min-h-96 w-full flex flex-col justify-center gap-5 text-center">
                 <h1 className="text-4xl text-orange-400 font-bold ">
                     Our Services
                 </h1>
-                <p className="text-gray-400 text-sm w-[500px] mx-auto ">
+                <p className="text-gray-400 text-sm max-w-[500px] mx-auto ">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Voluptatibus, saepe incidunt ipsam eveniet inventore cum?
                 </p>
-                <div className="flex gap-5 justify-center mt-5">
+                <div className="flex flex-wrap gap-5 justify-center mt-5">
                     <div className="w-[200px] h-[200px] flex flex-col items-center justify-center shadow-lg rounded-md bg-base-300 text-white hover:bg-slate-200 hover:text-base-300 transition ease-in-out duration-300">
                         <MdOutlineLocalShipping style={{ fontSize: "64px" }} />
                         <h1 className="text-lg font-medium ">
