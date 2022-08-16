@@ -1,22 +1,25 @@
+import { useState } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 export default function CookieBanner() {
+    const [showBanner, setShowBanner] = useState(false);
+
     useEffect(() => {
         setTimeout(() => {
-            document.getElementById("cookieBanner").classList.remove("hidden");
-            document.getElementById("cookieBanner").classList.add("flex");
+            setShowBanner(true);
         }, 5000);
     }, []);
 
     const handleCookieBanner = () => {
-        document.getElementById("cookieBanner").classList.add("hidden");
+        setShowBanner(false);
     };
 
     return (
         <div
-            class=" hidden py-6 flex-col justify-center sm:py-12"
-            id="cookieBanner"
+            class={` ${
+                showBanner ? "" : "hidden"
+            } py-6 flex-col justify-center sm:py-12`}
         >
             <div class="w-12/12 mx-auto bg-white fixed inset-x-5 p-5 bottom-0 z-50 rounded-lg drop-shadow-2xl flex gap-4 flex-wrap md:flex-nowrap text-center md:text-left items-center justify-center md:justify-between">
                 <div class="w-full text-gray-500">
