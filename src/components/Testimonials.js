@@ -13,7 +13,7 @@ export default function Testimonials() {
                 {testimonials.map((testimonial, index) => {
                     return (
                         <div
-                            class="p-4 rounded-lg shadow-md bg-base-300 md:w-52 h-52 md:h-60"
+                            class="p-4 rounded-lg shadow-md bg-base-300 md:w-52 h-52 md:h-60 2xl:w-56"
                             key={index}
                         >
                             <div class="mb-2">

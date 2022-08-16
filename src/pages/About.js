@@ -8,7 +8,7 @@ import {
 import { AiOutlinePercentage } from "react-icons/ai";
 export default function About() {
     return (
-        <div className=" w-11/12 mx-auto flex flex-col gap-10 ">
+        <div className=" w-full mx-auto flex flex-col gap-10 ">
             <div className="w-full h-fit p-10 bg-base-200 flex flex-col lg:flex-row text-center lg:text-left gap-10 items-center rounded-lg">
                 <div className="flex flex-col gap-5">
                     <h1 className="text-4xl text-white ">Kitab Store</h1>
@@ -61,7 +61,6 @@ export default function About() {
                     </div>
                 </div>
             </div>
-
             <Testimonials />
         </div>
     );

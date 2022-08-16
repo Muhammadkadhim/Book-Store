@@ -7,7 +7,7 @@ import "swiper/css/free-mode";
 
 export default function Slider({ children }) {
     return (
-        <div className="w-full ">
+        <div className="w-full">
             <Swiper
                 freeMode={FreeMode}
                 grabCursor={true}
