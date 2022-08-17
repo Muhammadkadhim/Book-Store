@@ -1,18 +1,51 @@
 import { Loading } from "./";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { FreeMode, Autoplay } from "swiper";
+import SwiperCore, { FreeMode, Autoplay, Navigation } from "swiper";
 import "swiper/css";
 import "swiper/css/autoplay";
 import "swiper/css/free-mode";
+import { MdChevronLeft, MdChevronRight } from "react-icons/md";
+import React from "react";
+
+SwiperCore.use([Navigation]);
 
 export default function Slider({ children }) {
+    const navigationPrevRef = React.useRef(null);
+    const navigationNextRef = React.useRef(null);
+
     return (
-        <div className="w-full">
+        <div className="w-full flex relative">
             <Swiper
+                onInit={(swiper) => {
+                    swiper.params.navigation.prevEl = navigationPrevRef.current;
+                    swiper.params.navigation.nextEl = navigationNextRef.current;
+                    swiper.navigation.init();
+                    swiper.navigation.update();
+                }}
                 freeMode={FreeMode}
                 grabCursor={true}
-                modules={[FreeMode, Autoplay]}
-                autoplay={{ delay: 2000 }}
+                loop
+                modules={[FreeMode, Autoplay, Navigation]}
+                autoplay={false}
+                navigation={{
+                    prevEl: navigationPrevRef.current,
+                    nextEl: navigationNextRef.current,
+                }}
+                onSwiper={(swiper) => {
+                    // Delay execution for the refs to be defined
+                    setTimeout(() => {
+                        // Override prevEl & nextEl now that refs are defined
+                        swiper.params.navigation.prevEl =
+                            navigationPrevRef.current;
+                        swiper.params.navigation.nextEl =
+                            navigationNextRef.current;
+
+                        // Re-init navigation
+                        swiper.navigation.destroy();
+                        swiper.navigation.init();
+                        swiper.navigation.update();
+                    });
+                }}
                 className="mySwiper"
                 slidesPerView={1}
                 breakpoints={{
@@ -42,6 +75,18 @@ export default function Slider({ children }) {
                     <Loading />
                 )}
             </Swiper>
+            <div
+                className="w-10 h-10 bg-base-200 text-orange-200 hover:bg-black transition ease-in-out duration-150 cursor-pointer rounded-full absolute left-[-55px] top-[40%] z-30  hidden md:flex justify-center items-center"
+                ref={navigationPrevRef}
+            >
+                <MdChevronLeft style={{ fontSize: "24px" }} />
+            </div>
+            <div
+                className="w-10 h-10 bg-base-200 text-orange-200 hover:bg-black transition ease-in-out duration-150 cursor-pointer rounded-full absolute right-[-55px] top-[40%] z-30 hidden md:flex justify-center items-center  "
+                ref={navigationNextRef}
+            >
+                <MdChevronRight style={{ fontSize: "24px" }} />
+            </div>
         </div>
     );
 }
