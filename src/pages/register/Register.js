@@ -4,14 +4,17 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { registrationSchema } from "./regitrationSchema.yup";
 import { useDispatch, useSelector } from "react-redux";
-import { register as registerAction } from "../../redux/userSlice";
+import { login as loginAction } from "../../redux/userSlice";
 import { useEffect } from "react";
+import { auth } from "../../firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 export default function Register() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const isAuthorized = useSelector((state) => state.user.isAuthorized);
+    const user = useSelector((state) => state.user.user);
+
     const {
         register,
         formState: { errors },
@@ -20,16 +23,21 @@ export default function Register() {
         resolver: yupResolver(registrationSchema),
     });
 
-    const onSubmit = (payload) => {
-        dispatch(registerAction(payload));
-    };
-
-    useEffect(() => {
-        if (isAuthorized) {
-            navigate("/");
+    const onSubmit = async (payload) => {
+        dispatch(loginAction(payload));
+        try {
+            const user = await createUserWithEmailAndPassword(
+                auth,
+                payload.email,
+                payload.password
+            );
+            if (user) {
+                navigate("/");
+            }
+        } catch (err) {
+            console.log(err);
         }
-    });
-
+    };
     return (
         <>
             <div className="text-sm breadcrumbs  w-10/12 mx-auto">

@@ -5,19 +5,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout as logoutAction } from "../../redux/userSlice";
 import NavLinks from "./Menu";
 import { logo } from "../../assets/";
-import { useState } from "react";
-import { useEffect } from "react";
 
 export default function Navbar() {
     const dispatch = useDispatch();
-    let isAuthorized = useSelector((state) => state.user.isAuthorized);
-
-    const [user, setUser] = useState("");
-
-    useEffect(() => {
-        const parsedUser = JSON.parse(localStorage.getItem("user"));
-        setUser(parsedUser.username);
-    }, [isAuthorized]);
+    const user = JSON.parse(localStorage.getItem("user"));
+    console.log(user);
 
     return (
         <div className="navbar bg-base-100 z-50 fixed top-0 left-0  px-5">
@@ -58,13 +50,13 @@ export default function Navbar() {
                     </div>
                 </button>
                 <div className="dropdown dropdown-end">
-                    {isAuthorized ? (
+                    {user ? (
                         <div
                             tabIndex="0"
                             class="avatar placeholder btn btn-ghost btn-circle"
                         >
                             <div class="bg-neutral-focus text-neutral-content rounded-full w-12">
-                                <span>{user.charAt(0)}</span>
+                                <span>AX</span>
                             </div>
                         </div>
                     ) : (
@@ -79,7 +71,7 @@ export default function Navbar() {
                     <ul
                         tabIndex="0"
                         className={`menu menu-compact dropdown-content mt-3 p-2 shadow-xl  bg-base-300 rounded-lg w-52 ${
-                            isAuthorized ? "hidden" : ""
+                            user ? "hidden" : ""
                         }`}
                     >
                         <li>
@@ -92,7 +84,7 @@ export default function Navbar() {
                     <ul
                         tabIndex="0"
                         className={`menu menu-compact dropdown-content mt-3 p-2 shadow-xl  bg-base-300 rounded-lg w-52 ${
-                            isAuthorized ? "" : "hidden"
+                            user ? "" : "hidden"
                         }`}
                     >
                         <li>
