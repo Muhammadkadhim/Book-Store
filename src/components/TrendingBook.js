@@ -48,7 +48,7 @@ export default function TrendingBook({ book }) {
                 <Link
                     to={`/trending${book.id}`}
                     type="button"
-                    class="flex gap-3 items-center text-white bg-gray-700 hover:bg-gray-900 shadow-md focus:outline-none w-fit rounded-lg px-2 py-2 mt-3 text-xs md:text-sm"
+                    className="flex gap-3 items-center text-white bg-gray-700 hover:bg-gray-900 shadow-md focus:outline-none w-fit rounded-lg px-2 py-2 mt-3 text-xs md:text-sm"
                 >
                     Read more <MdOutlineEast style={{ fontSize: "18px" }} />
                 </Link>
