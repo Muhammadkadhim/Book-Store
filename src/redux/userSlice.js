@@ -1,32 +1,48 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    userInfo: {},
-    authorized: false,
+    username: "",
+    email: "",
+    password: "",
+    isAuthorized: false,
+    message: "",
 };
 
 export const userSlice = createSlice({
     name: "user",
     initialState,
     reducers: {
+        register: (state, action) => {
+            state.username = action.payload.username;
+            state.email = action.payload.email;
+            state.password = action.payload.password;
+            let userInfo = {
+                username: action.payload.username,
+                email: action.payload.email,
+                password: action.payload.password,
+            };
+            localStorage.setItem("user", JSON.stringify(userInfo));
+            state.isAuthorized = true;
+        },
         login: (state, action) => {
-            if (state.userInfo === action.payload) {
-                state.authorized = true;
+            let parsedUserData = JSON.parse(localStorage.getItem("user"));
+            let userData = {
+                username: parsedUserData.username,
+                email: parsedUserData.email,
+                password: parsedUserData.password,
+            };
+            if (JSON.stringify(userData) === JSON.stringify(action.payload)) {
+                state.isAuthorized = true;
+            } else {
+                state.message = "Please check your username or password again!";
             }
         },
-        register: (state, action) => {
-            state.userInfo = action.payload;
-            state.authorized = true;
-            localStorage.setItem("user", state.userInfo);
-        },
         logout: (state) => {
-            state.userInfo = {};
-            state.authorized = false;
+            state.isAuthorized = false;
         },
-        authorization: (state, action) => {},
     },
 });
 
-export const { login, register, authorization } = userSlice.actions;
+export const { login, register, logout } = userSlice.actions;
 
 export default userSlice.reducer;
