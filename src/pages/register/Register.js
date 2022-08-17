@@ -1,14 +1,17 @@
 import { MdEmail, MdLock, MdPerson, MdError } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { registrationSchema } from "./regitrationSchema.yup";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { register as registerAction } from "../../redux/userSlice";
+import { useEffect } from "react";
 
 export default function Register() {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
+    const isAuthorized = useSelector((state) => state.user.isAuthorized);
     const {
         register,
         formState: { errors },
@@ -19,8 +22,13 @@ export default function Register() {
 
     const onSubmit = (payload) => {
         dispatch(registerAction(payload));
-        localStorage.setItem("user", JSON.stringify(payload));
     };
+
+    useEffect(() => {
+        if (isAuthorized) {
+            navigate("/");
+        }
+    });
 
     return (
         <>
@@ -161,7 +169,7 @@ export default function Register() {
                             </div>
                         </div>
                         <div className="flex items-center justify-center mt-8">
-                            <button className="text-white py-2 px-4 uppercase rounded bg-indigo-500 hover:bg-indigo-600 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5" >
+                            <button className="text-white py-2 px-4 uppercase rounded bg-indigo-500 hover:bg-indigo-600 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
                                 Register
                             </button>
                         </div>

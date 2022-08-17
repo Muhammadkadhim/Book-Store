@@ -78,12 +78,12 @@ export default function Books() {
                             nextLabel={
                                 <button
                                     type="button"
-                                    class="text-white bg-base-200 hover:bg-black hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:focus:ring-blue-800"
+                                    className="text-white bg-base-200 hover:bg-black hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:focus:ring-blue-800"
                                 >
                                     <MdKeyboardArrowRight
                                         style={{ fontSize: "20px" }}
                                     />
-                                    <span class="sr-only">Next Page</span>
+                                    <span className="sr-only">Next Page</span>
                                 </button>
                             }
                             onPageChange={handlePageClick}
@@ -95,12 +95,14 @@ export default function Books() {
                             previousLabel={
                                 <button
                                     type="button"
-                                    class="text-white bg-base-200 hover:bg-black hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:focus:ring-blue-800"
+                                    className="text-white bg-base-200 hover:bg-black hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:focus:ring-blue-800"
                                 >
                                     <MdKeyboardArrowLeft
                                         style={{ fontSize: "20px" }}
                                     />
-                                    <span class="sr-only">Previous Page</span>
+                                    <span className="sr-only">
+                                        Previous Page
+                                    </span>
                                 </button>
                             }
                             renderOnZeroPageCount={null}

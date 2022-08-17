@@ -1,17 +1,28 @@
 import { MdEmail, MdLock } from "react-icons/md";
-import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { login as loginAction } from "../../redux/userSlice";
 import { useForm } from "react-hook-form";
+import { useEffect } from "react";
 
 export default function Login() {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const isAuthorized = useSelector((state) => state.user.isAuthorized);
+    const message = useSelector((state) => state.user.message);
 
     const { register, handleSubmit } = useForm();
 
     const onSubmit = (payload) => {
         dispatch(loginAction(payload));
     };
+
+    useEffect(() => {
+        if (isAuthorized) {
+            navigate("/");
+        }
+    });
 
     return (
         <>
@@ -93,19 +104,13 @@ export default function Login() {
                                 </div>
                             </div>
                         </div>
-                        <div className="mt-4 flex items-center text-gray-300">
-                            <input
-                                type="checkbox"
-                                id="remember"
-                                name="remember"
-                                className="mr-3"
-                            />
-                            <label htmlFor="remember">Remember me</label>
-                        </div>
-                        <div className="flex items-center justify-center mt-8">
+                        <div className="flex flex-col items-center justify-center mt-8">
                             <button className="text-white py-2 px-4 uppercase rounded bg-indigo-500 hover:bg-indigo-600 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
                                 Sign in
                             </button>
+                            <p className="text-sm text-red-400 mt-4 ">
+                                {message}
+                            </p>
                         </div>
                     </form>
                 </div>
