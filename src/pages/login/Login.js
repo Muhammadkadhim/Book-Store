@@ -1,29 +1,11 @@
 import { MdEmail, MdLock } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { login as loginAction } from "../../redux/userSlice";
 import { useForm } from "react-hook-form";
-import { useEffect } from "react";
-import { useState } from "react";
-import { auth } from "../../firebase";
 
 export default function Login() {
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-
-    const user = useSelector((state) => state.user.user);
-    const [message, setMessage] = useState("");
-
     const { register, handleSubmit } = useForm();
 
-    const onSubmit = (payload) => {
-        dispatch(loginAction(payload));
-        auth.signInWithEmailAndPassword(payload.email, payload.password)
-            .then((data) => navigate("/"))
-            .catch((err) =>
-                setMessage("Please check your username and password again")
-            );
-    };
+    const onSubmit = (payload) => {};
 
     return (
         <>
