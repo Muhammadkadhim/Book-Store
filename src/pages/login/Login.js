@@ -91,9 +91,7 @@ export default function Login() {
                             <button className="text-white py-2 px-4 uppercase rounded bg-indigo-500 hover:bg-indigo-600 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
                                 Sign in
                             </button>
-                            <p className="text-sm text-red-400 mt-4 ">
-                                {message}
-                            </p>
+                            <p className="text-sm text-red-400 mt-4 "></p>
                         </div>
                     </form>
                 </div>

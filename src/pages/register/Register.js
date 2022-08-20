@@ -3,8 +3,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { registrationSchema } from "./regitrationSchema.yup";
+import { useAuth } from "../../contexts/AuthContext";
+import { useState } from "react";
+import { Spinner } from "flowbite-react";
 
 export default function Register() {
+    const [loading, setLoading] = useState(false);
     const {
         register,
         formState: { errors },
@@ -13,7 +17,17 @@ export default function Register() {
         resolver: yupResolver(registrationSchema),
     });
 
-    const onSubmit = async (payload) => {};
+    const { signUp, currentUser } = useAuth();
+
+    const onSubmit = async (payload) => {
+        setLoading(true);
+        try {
+            await signUp(payload.email, payload.password);
+        } catch (error) {
+            console.log(error);
+        }
+        setLoading(false);
+    };
     return (
         <>
             <div className="text-sm breadcrumbs  w-10/12 mx-auto">
@@ -153,10 +167,20 @@ export default function Register() {
                             </div>
                         </div>
                         <div className="flex items-center justify-center mt-8">
-                            <button className="text-white py-2 px-4 uppercase rounded bg-indigo-500 hover:bg-indigo-600 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
-                                Register
-                            </button>
+                            {loading ? (
+                                <Spinner
+                                    color="warning"
+                                    aria-label="Warning spinner example"
+                                />
+                            ) : (
+                                <button className="text-white py-2 px-4 uppercase rounded bg-indigo-500 hover:bg-indigo-600 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
+                                    Register
+                                </button>
+                            )}
                         </div>
+                        <p className="mt-10 text-center">
+                            {JSON.stringify(currentUser)}
+                        </p>
                     </form>
                 </div>
             </div>
