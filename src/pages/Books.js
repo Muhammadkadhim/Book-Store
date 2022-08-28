@@ -62,7 +62,7 @@ export default function Books() {
 
     return (
         <>
-            <div className="text-sm breadcrumbs  w-9/12 md:w-11/12 mx-auto">
+            <div className="text-sm breadcrumbs text-white pt-10  w-9/12 md:w-11/12 mx-auto">
                 <ul>
                     <li>
                         <Link to="/">Home</Link>
@@ -78,7 +78,7 @@ export default function Books() {
                             nextLabel={
                                 <button
                                     type="button"
-                                    class="text-white bg-base-200 hover:bg-black hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:focus:ring-blue-800"
+                                    class="mx-3 text-white bg-slate-800 hover:bg-black  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center "
                                 >
                                     <MdKeyboardArrowRight
                                         style={{ fontSize: "20px" }}
@@ -90,12 +90,12 @@ export default function Books() {
                             pageRangeDisplayed={5}
                             pageCount={pageCount}
                             containerClassName="flex items-center gap-2"
-                            activeClassName="bg-slate-600 text-white"
-                            pageClassName="hover:bg-slate-800 hover:text-white rounded-full w-9 h-9 flex items-center justify-center transition ease-out duration-150"
+                            activeClassName="bg-black border-2 border-white text-white"
+                            pageClassName="mx-1 bg-slate-800 text-white rounded-full w-9 h-9 flex items-center justify-center transition ease-out duration-150"
                             previousLabel={
                                 <button
                                     type="button"
-                                    class="text-white bg-base-200 hover:bg-black hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:focus:ring-blue-800"
+                                    class="mx-3 text-white bg-slate-800 hover:bg-black  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center"
                                 >
                                     <MdKeyboardArrowLeft
                                         style={{ fontSize: "20px" }}

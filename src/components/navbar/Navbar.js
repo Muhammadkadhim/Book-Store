@@ -4,14 +4,14 @@ import NavLinks from "./Menu";
 import { logo } from "../../assets/";
 export default function Navbar() {
     return (
-        <div className="navbar bg-base-100 z-50 fixed top-0 left-0  px-5">
+        <div className="navbar bg-slate-800 z-50 fixed top-0 left-0  px-5">
             <div className="navbar-start">
                 <NavLinks />
             </div>
             <div className="navbar-center">
                 <Link
                     to="/"
-                    className="btn btn-ghost normal-case text-xl flex gap-2"
+                    className="btn btn-ghost normal-case text-xl flex gap-2 text-white"
                 >
                     <img src={logo} alt="logo" className="w-6 object-contain" />
                     KitabStore
@@ -19,7 +19,10 @@ export default function Navbar() {
             </div>
             <div className="navbar-end">
                 <div className="hidden md:flex">
-                    <Link to="/search" className="btn btn-ghost btn-circle">
+                    <Link
+                        to="/search"
+                        className="btn btn-ghost btn-circle text-white"
+                    >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="h-5 w-5"
@@ -36,18 +39,21 @@ export default function Navbar() {
                         </svg>
                     </Link>
                 </div>
-                <button className="btn btn-ghost btn-circle">
+                <button className="btn btn-ghost btn-circle text-white">
                     <div className="indicator">
                         <MdOutlineShoppingCart fontSize={"22px"} />
                     </div>
                 </button>
                 <div className="dropdown dropdown-end">
-                    <label tabIndex="0" className="btn btn-ghost btn-circle">
+                    <label
+                        tabIndex="0"
+                        className="btn btn-ghost btn-circle text-white"
+                    >
                         <MdOutlinePersonOutline fontSize={"24px"} />
                     </label>
                     <ul
                         tabIndex="0"
-                        className="menu menu-compact dropdown-content mt-3 p-2 shadow-xl  bg-base-300 rounded-lg w-52"
+                        className="menu menu-compact dropdown-content mt-3 p-2 shadow-xl text-white  bg-slate-800 rounded-lg w-52"
                     >
                         <li>
                             <Link to="/login">Login</Link>

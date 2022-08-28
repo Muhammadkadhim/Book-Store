@@ -41,7 +41,7 @@ export default function Hero() {
     return (
         <>
             {trendingBooks ? (
-                <div className="w-11/12 mx-auto md:w-full h-[300px]  md:h-[500px]  flex justify-center items-center">
+                <div className="w-11/12 my-10 mx-auto md:w-full h-[300px]  md:h-[500px]  flex justify-center items-center">
                     <Carousel
                         leftControl=" "
                         rightControl=" "
@@ -53,7 +53,7 @@ export default function Hero() {
                     </Carousel>
                 </div>
             ) : (
-                <div className="w-11/12 mx-auto md:w-12/12 h-56 md:h-[500px] mt-20 flex items-center justify-center py-20">
+                <div className="w-11/12 mx-auto md:w-12/12 h-56 md:h-[500px]  flex items-center justify-center py-20">
                     <LoadingBooks />
                 </div>
             )}

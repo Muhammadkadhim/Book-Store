@@ -20,7 +20,7 @@ const Menu = () => {
     return (
         <>
             <div className="z-50">
-                <div className="px-3 text-left  group">
+                <div className="px-3 text-left text-slate-100 group">
                     <button
                         onClick={() => {
                             setMenu(!menu);
@@ -36,7 +36,7 @@ const Menu = () => {
                         menu
                             ? "translate-x-0 opacity-100"
                             : "-translate-x-[100%] opacity-0"
-                    }  absolute top-0 left-0 right-0 w-full md:w-96  z-40 h-screen p-4 overflow-y-auto bg-base-100 shadow-2xl   transition-all duration-500`}
+                    }  absolute top-0 left-0 right-0 w-full md:w-96  z-40 h-screen p-4 overflow-y-auto bg-slate-800 shadow-2xl   transition-all duration-500`}
                     tabIndex="-1"
                     aria-labelledby="drawer-label"
                 >
@@ -45,7 +45,7 @@ const Menu = () => {
                         data-drawer-dismiss="menu"
                         aria-controls="menu"
                         aria-label="open menu"
-                        className="text-gray-200 bg-transparent  hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5 inline-flex items-center"
+                        className="text-slate-100 bg-transparent  hover:text-gray-300 rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5 inline-flex items-center"
                         onClick={(e) => {
                             setMenu(!menu);
                         }}
@@ -54,12 +54,12 @@ const Menu = () => {
                         <span className="sr-only">Close menu</span>
                     </button>
                     <div className="w-full h-fit py-10  flex flex-col gap-5">
-                        <span className="text-xs text-slate-400">Menu</span>
+                        <span className="text-xs text-slate-800">Menu</span>
                         {/* redering pages */}
                         <div className="w-full">
                             <button
                                 data-dropdown-toggle="dropdown"
-                                className=" w-full flex justify-between text-white bg-base-300  font-medium rounded-lg text-sm px-4 py-2.5 text-center  items-center "
+                                className=" w-full flex justify-between text-white bg-slate-900  font-medium rounded-lg text-sm px-4 py-2.5 text-center  items-center "
                                 type="button"
                                 onClick={(e) => {
                                     dropdownToggler(e);
@@ -81,7 +81,7 @@ const Menu = () => {
                                     </span>
                                 )}
                             </button>
-                            <div className="hidden mt-2 z-10 w-full text-left bg-base-300 text-slate-200 rounded-lg shadow ">
+                            <div className="hidden mt-2 z-10 w-full text-left bg-slate-900 text-slate-200 rounded-lg shadow ">
                                 <ul
                                     className="py-1 text-sm"
                                     aria-labelledby="dropdownDefault"
@@ -96,7 +96,7 @@ const Menu = () => {
                                             >
                                                 <Link
                                                     to={`/${page.url}`}
-                                                    className="block py-2 px-4 hover:bg-slate-900  focus:bg-slate-900"
+                                                    className="block py-2 px-4 hover:bg-slate-700  focus:bg-slate-700"
                                                 >
                                                     {page.txt}
                                                 </Link>
@@ -107,7 +107,7 @@ const Menu = () => {
                             </div>
                         </div>
 
-                        <span className="text-xs text-slate-400">
+                        <span className="text-xs text-slate-800">
                             Categories
                         </span>
 
@@ -117,7 +117,7 @@ const Menu = () => {
                                 <div className="w-full" key={index}>
                                     <button
                                         data-dropdown-toggle="dropdown"
-                                        className=" w-full flex justify-between text-slate-100 bg-base-300  font-medium rounded-lg text-sm px-4 py-2.5 text-center  items-center "
+                                        className=" w-full flex justify-between text-slate-100 bg-slate-900  font-medium rounded-lg text-sm px-4 py-2.5 text-center  items-center "
                                         type="button"
                                         onClick={(e) => {
                                             dropdownToggler(e);
@@ -139,7 +139,7 @@ const Menu = () => {
                                             </span>
                                         )}
                                     </button>
-                                    <div className="hidden mt-2 z-10 w-full text-left bg-base-300 text-slate-200 rounded-lg shadow ">
+                                    <div className="hidden mt-2 z-10 w-full text-left bg-slate-900 text-slate-200 rounded-lg shadow ">
                                         <ul
                                             className="py-1 text-sm"
                                             aria-labelledby="dropdownDefault"
@@ -155,7 +155,7 @@ const Menu = () => {
                                                         >
                                                             <Link
                                                                 to={`${sCategory.url}`}
-                                                                className="block py-2 px-4 hover:bg-slate-900  focus:bg-slate-900"
+                                                                className="block py-2 px-4 hover:bg-slate-700  focus:bg-slate-700"
                                                             >
                                                                 {sCategory.txt}
                                                             </Link>

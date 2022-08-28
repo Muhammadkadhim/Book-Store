@@ -36,7 +36,7 @@ export default function Special() {
             </h1>
 
             {special ? (
-                <div className="w-11/12 mx-auto md:w-full h-full lg:px-20 px-5  py-10 rounded-lg bg-base-300 flex flex-col md:flex-row  gap-10">
+                <div className="w-11/12 mx-auto md:w-full h-full lg:px-20 px-5  py-10 rounded-lg bg-slate-800 flex flex-col md:flex-row  gap-10">
                     <img
                         src={special.cover}
                         alt={special.title}

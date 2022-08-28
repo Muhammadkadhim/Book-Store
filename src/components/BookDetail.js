@@ -73,7 +73,7 @@ export default function BookDetail() {
             </div>
             <div className="flex justify-center w-full">
                 {book ? (
-                    <section className="body-font overflow-hidden bg-base-200 lg:min-h-[600px] w-11/12 mx-auto my-5 rounded-lg flex items-center justify-center">
+                    <section className="body-font overflow-hidden bg-slate-800 lg:min-h-[600px] w-11/12 mx-auto my-5 rounded-lg flex items-center justify-center">
                         <div className="w-9/12 px-5 py-5 mx-auto ">
                             <div className="lg:w-4/5 mx-auto flex flex-wrap rounded-lg">
                                 {book.cover ? (

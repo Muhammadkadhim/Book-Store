@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Book } from "./";
+import { Book, Loading } from "./";
 import { Slider } from "./";
 
 export default function NewBooks() {
-    const [newArrivals, setNewArrivals] = useState();
+    const [newArrivals, setNewArrivals] = useState(null);
 
     useEffect(() => {
         axios
@@ -36,17 +36,19 @@ export default function NewBooks() {
             <h1 className="text-orange-200 text-2xl uppercase">New Arrivals</h1>
 
             <Slider>
-                {newArrivals
-                    ? newArrivals.map((newArrival, index) => {
-                          return (
-                              <Book
-                                  book={newArrival}
-                                  key={index}
-                                  category="New Arrivals"
-                              />
-                          );
-                      })
-                    : ""}
+                {newArrivals ? (
+                    newArrivals.map((newArrival, index) => {
+                        return (
+                            <Book
+                                book={newArrival}
+                                key={index}
+                                category="New Arrivals"
+                            />
+                        );
+                    })
+                ) : (
+                    <Loading />
+                )}
             </Slider>
         </div>
     );

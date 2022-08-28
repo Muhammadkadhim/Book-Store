@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Book } from ".";
-import { Slider } from ".";
+import { Book, Loading } from "./";
+import { Slider } from "./";
 
 export default function BestSellers() {
-    const [bestSellers, setBestSellers] = useState();
+    const [bestSellers, setBestSellers] = useState(null);
 
     useEffect(() => {
         axios
@@ -32,21 +32,23 @@ export default function BestSellers() {
     }, []);
 
     return (
-        <div className=" w-11/12 mx-auto  flex flex-col gap-10 text-center">
+        <div className=" w-11/12 mx-auto  flex flex-col gap-10 text-center ">
             <h1 className="text-orange-200 text-2xl uppercase">Best Sellers</h1>
 
             <Slider>
-                {bestSellers
-                    ? bestSellers.map((bestSeller, index) => {
-                          return (
-                              <Book
-                                  book={bestSeller}
-                                  key={index}
-                                  category="Best Sellers"
-                              />
-                          );
-                      })
-                    : ""}
+                {bestSellers ? (
+                    bestSellers.map((bestSeller, index) => {
+                        return (
+                            <Book
+                                book={bestSeller}
+                                key={index}
+                                category="Best Sellers"
+                            />
+                        );
+                    })
+                ) : (
+                    <Loading />
+                )}
             </Slider>
         </div>
     );

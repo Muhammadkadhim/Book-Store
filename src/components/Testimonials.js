@@ -15,7 +15,7 @@ export default function Testimonials() {
                 {testimonials.map((testimonial, index) => {
                     return (
                         <div
-                            className="p-4 rounded-lg shadow-md bg-base-300 md:w-52 h-52 md:h-60 2xl:w-56"
+                            className="p-4 rounded-lg shadow-md bg-slate-800 md:w-52 h-52 md:h-60 2xl:w-56"
                             key={index}
                         >
                             <div className="mb-2">

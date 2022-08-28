@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Book } from "./";
+import { Book, Loading } from "./";
 import { Slider } from "./";
 
 export default function Comics() {
-    const [comics, setComics] = useState();
+    const [comics, setComics] = useState(null);
 
     useEffect(() => {
         axios
@@ -36,13 +36,15 @@ export default function Comics() {
             <h1 className="text-orange-200 text-2xl uppercase">Comics</h1>
 
             <Slider>
-                {comics
-                    ? comics.map((comic, index) => {
-                          return (
-                              <Book book={comic} key={index} category="Comic" />
-                          );
-                      })
-                    : ""}
+                {comics ? (
+                    comics.map((comic, index) => {
+                        return (
+                            <Book book={comic} key={index} category="Comic" />
+                        );
+                    })
+                ) : (
+                    <Loading />
+                )}
             </Slider>
         </div>
     );

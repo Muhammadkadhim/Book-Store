@@ -10,7 +10,7 @@ import { Tooltip } from "flowbite-react";
 
 export default function TrendingBook({ book }) {
     return (
-        <div className="pl-5 md:px-20 flex gap-5 md:gap-10 items-center  h-full bg-base-200 rounded-lg">
+        <div className="pl-5 md:px-20 flex gap-5 md:gap-10 items-center  h-full bg-slate-800 rounded-lg">
             {book.cover ? (
                 <img
                     src={book.cover}
