@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 import { BookList, Loading } from "../components";
 import { Link } from "react-router-dom";
 import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from "react-icons/md";
 
 import ReactPaginate from "react-paginate";
+import useAxios from "../hooks/useAxios";
 
 export default function Books() {
     const { category } = useParams();
-    const [books, setBooks] = useState();
+    const [limit, setLimit] = useState(
+        Math.floor(Math.random() * (50 - 25 + 1)) + 25
+    );
 
     // pagination
     const [currentBooks, setCurrentBooks] = useState(null);
@@ -17,34 +19,15 @@ export default function Books() {
     const [itemsPerPage, setItemsPerPage] = useState(10);
     const [itemOffset, setItemOffset] = useState(0);
 
+    const { bookData } = useAxios({
+        endpoint: `subjects/${category}.json`,
+        limit: limit,
+    });
+    const [books, setBooks] = useState(null);
+
     useEffect(() => {
-        let limit = Math.floor(Math.random() * (50 - 25 + 1)) + 25;
-        axios
-            .get(
-                `https://openlibrary.org/subjects/${category}.json?limit=${limit}`
-            )
-            .then((data) => {
-                const books = data.data.works.map((work) => {
-                    const { key, authors, cover_id, edition_count, title } =
-                        work;
-
-                    return {
-                        id: key,
-                        title: title,
-                        authors: authors,
-                        cover:
-                            cover_id != null
-                                ? `https://covers.openlibrary.org/b/id/${cover_id}-L.jpg`
-                                : undefined,
-                        edition_count: edition_count,
-                        price: Math.floor(Math.random() * (15 - 5 + 1)) + 5,
-                    };
-                });
-
-                setBooks(books);
-            })
-            .catch((err) => console.log(err));
-    }, [category]);
+        if (bookData !== null) setBooks(bookData);
+    }, [bookData]);
 
     // pagination
     useEffect(() => {
@@ -78,12 +61,12 @@ export default function Books() {
                             nextLabel={
                                 <button
                                     type="button"
-                                    class="mx-3 text-white bg-slate-800 hover:bg-black  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center "
+                                    className="mx-3 text-white bg-slate-800 hover:bg-black  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center "
                                 >
                                     <MdKeyboardArrowRight
                                         style={{ fontSize: "20px" }}
                                     />
-                                    <span class="sr-only">Next Page</span>
+                                    <span className="sr-only">Next Page</span>
                                 </button>
                             }
                             onPageChange={handlePageClick}
@@ -95,12 +78,14 @@ export default function Books() {
                             previousLabel={
                                 <button
                                     type="button"
-                                    class="mx-3 text-white bg-slate-800 hover:bg-black  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center"
+                                    className="mx-3 text-white bg-slate-800 hover:bg-black  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center"
                                 >
                                     <MdKeyboardArrowLeft
                                         style={{ fontSize: "20px" }}
                                     />
-                                    <span class="sr-only">Previous Page</span>
+                                    <span className="sr-only">
+                                        Previous Page
+                                    </span>
                                 </button>
                             }
                             renderOnZeroPageCount={null}

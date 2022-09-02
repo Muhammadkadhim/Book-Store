@@ -1,41 +1,27 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+
 import { delimiter } from "../utils/delimiter";
 import { Tooltip } from "flowbite-react";
 
 import { MdFavoriteBorder, MdOutlineShoppingCart } from "react-icons/md";
+import useAxios from "../hooks/useAxios";
 
 export default function Special() {
-    const [special, setSpecial] = useState();
+    const { specialBook } = useAxios({
+        specialEndpoint: "works/OL2010879W.json",
+    });
+    const [special, setSpecial] = useState(null);
 
     useEffect(() => {
-        axios
-            .get(`https://openlibrary.org/works/OL18766691W.json`)
-            .then((data) => {
-                const { key, authors, covers, title } = data.data;
-
-                setSpecial({
-                    id: key,
-                    title: title,
-                    authors: authors,
-                    cover:
-                        covers != null
-                            ? `https://covers.openlibrary.org/b/id/${covers[0]}-L.jpg`
-                            : undefined,
-                    description: data.data.description.value,
-                    category: data.data.subjects[1],
-                });
-            })
-            .catch((err) => console.log(err));
-    }, []);
+        if (specialBook !== null) setSpecial(specialBook);
+    }, [specialBook]);
 
     return (
         <div className="w-full flex flex-col gap-10 text-center">
-            <h1 className="text-orange-200 text-2xl uppercase">
+            <h1 className="text-3xl font-medium uppercase text-orange-400">
                 Special Offer
             </h1>
-
-            {special ? (
+            {special && (
                 <div className="w-11/12 mx-auto md:w-full h-full lg:px-20 px-5  py-10 rounded-lg bg-slate-800 flex flex-col md:flex-row  gap-10">
                     <img
                         src={special.cover}
@@ -48,7 +34,7 @@ export default function Special() {
                             {delimiter(special.description, 300)}
                         </p>
                         <p className="text-xl text-orange-500 flex items-center ">
-                            $5 USD{" "}
+                            $3 USD{" "}
                             <span className="text-sm text-orange-200 ml-5">
                                 80% off
                             </span>
@@ -76,8 +62,6 @@ export default function Special() {
                         </div>
                     </div>
                 </div>
-            ) : (
-                ""
             )}
         </div>
     );

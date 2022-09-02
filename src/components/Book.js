@@ -8,7 +8,7 @@ import { cover_not_found } from "../assets";
 export default function Book(props) {
     return (
         <div
-            className="flex flex-col items-center gap-2 p-2 text-center text-white w-full h-[320px] md:w-[200px] bg-slate-800 rounded-lg shadow-lg shadow-black hover:outline hover:outline-slate-700 transition ease-out"
+            className="flex flex-col items-center gap-2 p-2 text-center text-white w-full h-[320px] md:w-[200px] bg-slate-800 rounded-lg  hover:outline hover:outline-slate-700 transition ease-out"
             key={props.index}
         >
             {props.book.cover ? (

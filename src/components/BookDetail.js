@@ -1,90 +1,64 @@
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import axios from "axios";
 import { MdFavoriteBorder, MdOutlineShoppingCart } from "react-icons/md";
 import { Tooltip } from "flowbite-react";
 import { delimiter } from "../utils/delimiter";
-
 import { cover_not_found } from "../assets";
 import { Loading } from "./";
+import useAxios from "../hooks/useAxios";
 
 export default function BookDetail() {
     const { category, bookId } = useParams();
-    const [book, setBook] = useState();
+    const [bookDetails, setBookDetails] = useState();
+    const [bookAuthors, setBookAuthors] = useState();
+
+    const { bookDetailsData, authors } = useAxios({
+        bookId: bookId,
+    });
 
     useEffect(() => {
-        axios
-            .get(`https://openlibrary.org/works/${bookId}.json`)
-            .then((data) => {
-                let authors = [];
-                data.data.authors.forEach((author) => {
-                    axios
-                        .get(`https://openlibrary.org${author.author.key}.json`)
-                        .then((data) => {
-                            authors.push(data.data.name);
-                        })
-                        .catch((err) => console.log(err));
-                });
+        setBookDetails(bookDetailsData);
+    }, [bookDetailsData]);
 
-                let description = "";
-                if (data.data.description) {
-                    if (typeof data.data.description === "string") {
-                        description = data.data.description;
-                    } else {
-                        description = data.data.description.value;
-                    }
-                } else {
-                    description = "No Description Found";
-                }
-                // getting general data
-                setBook({
-                    id: data.data.key,
-                    title: data.data.title,
-                    authors: authors,
-                    cover: data.data.covers
-                        ? `https://covers.openlibrary.org/b/id/${data.data.covers[0]}-L.jpg`
-                        : undefined,
-                    description: description,
-                    subjects: data.data.subjects
-                        ? data.data.subjects.join(",")
-                        : "No subjects found",
-                    price: Math.floor(Math.random() * (15 - 5 + 1)) + 5,
-                });
-            })
-            .catch((err) => console.log(err));
-    }, [bookId]);
+    useEffect(() => {
+        setBookAuthors(authors);
+    }, [authors]);
+
     return (
         <>
             <div className="text-sm breadcrumbs  w-9/12 md:w-11/12 mx-auto">
-                <ul>
+                <ul className="mt-10">
                     <li>
                         <Link to="/">Home</Link>
                     </li>
                     <li>
-                        {category === "Comics" ||
-                        category === "New Arrivals" ? (
+                        {category === "comics" ||
+                        category === "best-sellers" ||
+                        category === "trends" ||
+                        category === "new-arrivals" ? (
                             category
                         ) : (
                             <Link to={`/${category}`}>{category}</Link>
                         )}
                     </li>
-                    <li>{book ? book.title : ""}</li>
+                    <li>{bookDetails ? bookDetails.title : ""}</li>
                 </ul>
             </div>
+
             <div className="flex justify-center w-full">
-                {book ? (
+                {bookDetails ? (
                     <section className="body-font overflow-hidden bg-slate-800 lg:min-h-[600px] w-11/12 mx-auto my-5 rounded-lg flex items-center justify-center">
                         <div className="w-9/12 px-5 py-5 mx-auto ">
                             <div className="lg:w-4/5 mx-auto flex flex-wrap rounded-lg">
-                                {book.cover ? (
+                                {bookDetails.cover ? (
                                     <img
-                                        alt={book.title}
+                                        alt={bookDetails.title}
                                         className="lg:w-1/2 w-full h-[400px] object-contain object-center rounded-lg"
-                                        src={book.cover}
+                                        src={bookDetails.cover}
                                     />
                                 ) : (
                                     <img
-                                        alt={book.title}
+                                        alt={bookDetails.title}
                                         className="lg:w-1/2 w-full h-[400px] object-contain object-center rounded-lg"
                                         src={cover_not_found}
                                     />
@@ -94,30 +68,30 @@ export default function BookDetail() {
                                         {category}
                                     </h2>
                                     <h1 className="text-slate-100 text-2xl title-font font-medium mb-1">
-                                        {book.title}
+                                        {bookDetails.title}
                                     </h1>
-                                    <p className="text-xs text-gray-400">
-                                        {" "}
-                                        by:
-                                        {book.authors.map((author, index) => {
-                                            return (
-                                                <span key={index}>
-                                                    {author}
-                                                </span>
-                                            );
-                                        })}
+                                    <p className="text-xs text-orange-300 ">
+                                        by:{" "}
+                                        {bookAuthors && (
+                                            <span className="text-white">
+                                                {bookAuthors}
+                                            </span>
+                                        )}
                                     </p>
                                     <hr className="my-5" />
                                     <h2 className="text-sm title-font text-orange-400 tracking-widest">
                                         Description:
                                     </h2>
                                     <p className="leading-relaxed text-orange-200">
-                                        {delimiter(book.description, 100)}
+                                        {delimiter(
+                                            bookDetails.description,
+                                            100
+                                        )}
                                     </p>
 
                                     <div className="flex mt-5 justify-between items-center">
                                         <span className="title-font font-medium text-2xl text-slate-400">
-                                            ${book.price}.00
+                                            ${bookDetails.price}.00
                                         </span>
                                         <div className="flex gap-5 items-center">
                                             <Tooltip content="Add to Cart">

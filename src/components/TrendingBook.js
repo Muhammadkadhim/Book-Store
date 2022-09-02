@@ -25,7 +25,7 @@ export default function TrendingBook({ book }) {
                 />
             )}
             <div className="self-start mt-12 md:mt-32 flex flex-col gap-3">
-                <h3 className="text-xs md:text-md">{book.author}</h3>
+                <h3 className="text-xs md:text-md">{book.authors}</h3>
                 <h1 className="text-md md:text-2xl text-white">{book.title}</h1>
                 <p className="text-md md:text-2xl text-orange-300">
                     ${book.price}
@@ -46,7 +46,7 @@ export default function TrendingBook({ book }) {
                     </Tooltip>
                 </div>
                 <Link
-                    to={`/trending${book.id}`}
+                    to={`trends/works${book.id.replace("/works", "")}`}
                     type="button"
                     className="flex gap-3 items-center text-white bg-gray-700 hover:bg-gray-900 shadow-md focus:outline-none w-fit rounded-lg px-2 py-2 mt-3 text-xs md:text-sm"
                 >

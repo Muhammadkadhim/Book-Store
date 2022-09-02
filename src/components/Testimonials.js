@@ -3,10 +3,10 @@ import { testimonials } from "../constants";
 export default function Testimonials() {
     return (
         <div className="w-11/12 md:w-12/12 mx-auto flex flex-col gap-5">
-            <div className="my-6 text-center  w-full flex flex-col gap-5">
-                <h2 className="text-4xl font-bold text-orange-400">
+            <div className="my-6 text-center  w-full flex flex-col gap-2">
+                <h1 className="text-3xl font-medium uppercase text-orange-400">
                     Testimonials
-                </h2>
+                </h1>
                 <p className="text-sm text-gray-400">
                     What do our customers say about us
                 </p>
