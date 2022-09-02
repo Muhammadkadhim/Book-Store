@@ -104,8 +104,7 @@ export default function Footer() {
             {/* copyright */}
             <div className="py-6 px-4 bg-slate-800 border-t border-t-slate-500 text-center  md:flex md:items-center md:justify-between">
                 <span className="text-sm text-slate-400  sm:text-center">
-                    © 2022 <Link to="https://flowbite.com/">BokoShop</Link>. All
-                    Rights Reserved.
+                    © 2022 <Link to="/">Kitab Store</Link>. All Rights Reserved.
                 </span>
                 <div className="flex mt-4 space-x-6 justify-center md:justify-start md:mt-0">
                     <Link
