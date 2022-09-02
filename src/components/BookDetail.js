@@ -27,7 +27,7 @@ export default function BookDetail() {
     return (
         <>
             <div className="text-sm breadcrumbs  w-9/12 md:w-11/12 mx-auto">
-                <ul className="mt-10">
+                <ul className="mt-10 text-white">
                     <li>
                         <Link to="/">Home</Link>
                     </li>
