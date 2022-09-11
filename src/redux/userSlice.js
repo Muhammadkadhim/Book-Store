@@ -2,7 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     userInfo: {},
+    cart: [],
+    favourites: [],
     authorized: false,
+    error: "",
 };
 
 export const userSlice = createSlice({
@@ -10,23 +13,23 @@ export const userSlice = createSlice({
     initialState,
     reducers: {
         login: (state, action) => {
-            if (state.userInfo === action.payload) {
+            const { email, password } = state.userInfo;
+            if (
+                action.payload.email === email &&
+                action.payload.password === password
+            )
                 state.authorized = true;
-            }
         },
         register: (state, action) => {
             state.userInfo = action.payload;
             state.authorized = true;
-            localStorage.setItem("user", state.userInfo);
         },
         logout: (state) => {
-            state.userInfo = {};
             state.authorized = false;
         },
-        authorization: (state, action) => {},
     },
 });
 
-export const { login, register, authorization } = userSlice.actions;
+export const { login, register, authorization, logout } = userSlice.actions;
 
 export default userSlice.reducer;

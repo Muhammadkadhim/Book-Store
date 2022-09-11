@@ -1,8 +1,22 @@
 import { MdOutlinePersonOutline, MdOutlineShoppingCart } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import NavLinks from "./Menu";
 import { logo } from "../../assets/";
+import { useDispatch, useSelector } from "react-redux";
+import { logout as logoutAction } from "../../redux/userSlice";
+
 export default function Navbar() {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const authorized = useSelector((state) => state.user.authorized);
+    const userInfo = useSelector((state) => state.user.userInfo);
+
+    const logoutHandler = () => {
+        dispatch(logoutAction());
+        navigate("/login");
+    };
+
     return (
         <div className="navbar bg-slate-800 z-50 fixed top-0 left-0  px-5">
             <div className="navbar-start">
@@ -45,23 +59,38 @@ export default function Navbar() {
                     </div>
                 </button>
                 <div className="dropdown dropdown-end">
-                    <label
-                        tabIndex="0"
-                        className="btn btn-ghost btn-circle text-white"
-                    >
-                        <MdOutlinePersonOutline fontSize={"24px"} />
-                    </label>
-                    <ul
-                        tabIndex="0"
-                        className="menu menu-compact dropdown-content mt-3 p-2 shadow-xl text-white  bg-slate-800 rounded-lg w-52"
-                    >
-                        <li>
-                            <Link to="/login">Login</Link>
-                        </li>
-                        <li>
-                            <Link to="/register">Register</Link>
-                        </li>
-                    </ul>
+                    {authorized ? (
+                        <>
+                            <label
+                                tabIndex="0"
+                                className="btn btn-ghost btn-circle text-white"
+                            >
+                                <MdOutlinePersonOutline fontSize={"24px"} />
+                            </label>
+                            <ul
+                                tabIndex="0"
+                                className="menu menu-compact dropdown-content  mt-3 p-2 shadow-xl text-white  bg-slate-800 rounded-lg w-52"
+                            >
+                                <li>{userInfo && userInfo.username}</li>
+                                <li>{userInfo && userInfo.email}</li>
+                                <li className="flex items-center border-t mt-2">
+                                    <button
+                                        className="w-full grid place-content-center"
+                                        onClick={logoutHandler}
+                                    >
+                                        Logout
+                                    </button>
+                                </li>
+                            </ul>
+                        </>
+                    ) : (
+                        <Link
+                            to="/login"
+                            className="btn btn-ghost btn-circle text-white"
+                        >
+                            <MdOutlinePersonOutline fontSize={"24px"} />
+                        </Link>
+                    )}
                 </div>
             </div>
         </div>

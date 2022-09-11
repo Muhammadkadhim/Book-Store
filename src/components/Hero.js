@@ -7,7 +7,7 @@ import useAxios from "../hooks/useAxios";
 export default function Hero() {
     const { bookData } = useAxios({
         endpoint: "subjects/new.json",
-        limit: 6,
+        limit: 3,
     });
     const [trends, setTrends] = useState(null);
 

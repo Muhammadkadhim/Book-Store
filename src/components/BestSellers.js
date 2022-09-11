@@ -6,7 +6,7 @@ import useAxios from "../hooks/useAxios";
 export default function BestSellers() {
     const { bookData } = useAxios({
         endpoint: "subjects/photography.json",
-        limit: 6,
+        limit: 5,
     });
     const [bestSellers, setBestSellers] = useState(null);
 

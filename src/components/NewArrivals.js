@@ -6,7 +6,7 @@ import useAxios from "../hooks/useAxios";
 export default function NewBooks() {
     const { bookData } = useAxios({
         endpoint: "subjects/new.json",
-        limit: 6,
+        limit: 5,
     });
     const [newArrivals, setNewArrivals] = useState(null);
 

@@ -6,7 +6,7 @@ import { Slider } from "./";
 export default function Comics() {
     const { bookData } = useAxios({
         endpoint: "subjects/comics.json",
-        limit: 6,
+        limit: 5,
     });
     const [comics, setComics] = useState(null);
 

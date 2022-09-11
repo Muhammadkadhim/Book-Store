@@ -1,17 +1,38 @@
 import { MdEmail, MdLock } from "react-icons/md";
-import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { login as loginAction } from "../../redux/userSlice";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
+import { Loading } from "../../components";
+import { useEffect } from "react";
 
 export default function Login() {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
+    const isAuthorized = useSelector((state) => state.user.authorized);
+
+    const [errorMessage, setErrorMessage] = useState("");
+    const [loading, setLoading] = useState(false);
     const { register, handleSubmit } = useForm();
 
     const onSubmit = (payload) => {
         dispatch(loginAction(payload));
+        setLoading(true);
     };
+
+    useEffect(() => {
+        console.log("authorized");
+    }, [isAuthorized]);
+
+    // setTimeout(() => {
+    //     if (isAuthorized) {
+    //         navigate("/");
+    //     } else {
+    //         setErrorMessage("Please check your username and password again");
+    //     }
+    // }, 1000);
 
     return (
         <>
@@ -70,6 +91,7 @@ export default function Login() {
                                 type="email"
                                 name="email"
                                 placeholder="Email"
+                                autoComplete="off"
                                 {...register("email", { required: true })}
                             />
                             <div className="absolute left-0 inset-y-0 flex items-center">
@@ -85,6 +107,7 @@ export default function Login() {
                                 type="password"
                                 name="password"
                                 placeholder="Password"
+                                autoComplete="off"
                                 {...register("password", { required: true })}
                             />
                             <div className="absolute left-0 inset-y-0 flex items-center">
@@ -93,20 +116,28 @@ export default function Login() {
                                 </div>
                             </div>
                         </div>
-                        <div className="mt-4 flex items-center text-gray-300">
-                            <input
-                                type="checkbox"
-                                id="remember"
-                                name="remember"
-                                className="mr-3"
-                            />
-                            <label htmlFor="remember">Remember me</label>
+                        <div className="flex flex-col items-center justify-center mt-2">
+                            <p className="text-slate-200 my-4">
+                                {errorMessage}
+                            </p>
+                            {loading ? (
+                                <Loading />
+                            ) : (
+                                <button className="text-white py-2 px-4 uppercase rounded bg-indigo-500 hover:bg-indigo-600 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
+                                    Sign in
+                                </button>
+                            )}
                         </div>
-                        <div className="flex items-center justify-center mt-8">
-                            <button className="text-white py-2 px-4 uppercase rounded bg-indigo-500 hover:bg-indigo-600 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
-                                Sign in
-                            </button>
-                        </div>
+                        <p className="text-center mt-5">
+                            Don't have an account?{" "}
+                            <Link
+                                to="/register"
+                                className="underline text-white"
+                            >
+                                {" "}
+                                Register
+                            </Link>
+                        </p>
                     </form>
                 </div>
             </div>

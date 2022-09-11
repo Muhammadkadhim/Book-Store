@@ -1,5 +1,5 @@
 import { MdEmail, MdLock, MdPerson, MdError } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { registrationSchema } from "./regitrationSchema.yup";
@@ -8,6 +8,7 @@ import { register as registerAction } from "../../redux/userSlice";
 
 export default function Register() {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const {
         register,
@@ -19,7 +20,7 @@ export default function Register() {
 
     const onSubmit = (payload) => {
         dispatch(registerAction(payload));
-        localStorage.setItem("user", JSON.stringify(payload));
+        navigate("/");
     };
 
     return (
@@ -78,6 +79,7 @@ export default function Register() {
                                 id="username"
                                 type="text"
                                 placeholder="Username"
+                                autoComplete="off"
                                 {...register("username", { required: true })}
                             />
 
@@ -108,6 +110,7 @@ export default function Register() {
                                 id="email"
                                 type="email"
                                 placeholder="Email"
+                                autoComplete="off"
                                 {...register("email", { required: true })}
                             />
                             <div className="absolute left-0 inset-y-0 flex items-center">
@@ -138,6 +141,7 @@ export default function Register() {
                                 id="password"
                                 type="password"
                                 placeholder="Password"
+                                autoComplete="off"
                                 {...register("password", { required: true })}
                             />
                             <div className="absolute left-0 inset-y-0 flex items-center">
@@ -160,11 +164,18 @@ export default function Register() {
                                 </div>
                             </div>
                         </div>
-                        <div className="flex items-center justify-center mt-8">
+                        <div className="flexitems-center justify-center mt-8">
                             <button className="text-white py-2 px-4 uppercase rounded bg-indigo-500 hover:bg-indigo-600 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
                                 Register
                             </button>
                         </div>
+                        <p className="text-center mt-5">
+                            have an account?{" "}
+                            <Link to="/login" className="underline text-white">
+                                {" "}
+                                Login
+                            </Link>
+                        </p>
                     </form>
                 </div>
             </div>
