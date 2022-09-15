@@ -4,39 +4,37 @@ import { useDispatch, useSelector } from "react-redux";
 import { login as loginAction } from "../../redux/userSlice";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import { Loading } from "../../components";
 import { useEffect } from "react";
 
 export default function Login() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const isAuthorized = useSelector((state) => state.user.authorized);
-
-    const [errorMessage, setErrorMessage] = useState("");
-    const [loading, setLoading] = useState(false);
     const { register, handleSubmit } = useForm();
 
+    const authorized = useSelector((state) => state.user.authorized);
+    const [error, setError] = useState("");
+
     const onSubmit = (payload) => {
+        setError("");
         dispatch(loginAction(payload));
-        setLoading(true);
+
+        setTimeout(() => {
+            if (!authorized) {
+                setError("Please check your email and password again!");
+            }
+        }, 2000);
     };
 
     useEffect(() => {
-        console.log("authorized");
-    }, [isAuthorized]);
-
-    // setTimeout(() => {
-    //     if (isAuthorized) {
-    //         navigate("/");
-    //     } else {
-    //         setErrorMessage("Please check your username and password again");
-    //     }
-    // }, 1000);
+        if (authorized) {
+            navigate("/");
+        }
+    }, [authorized]);
 
     return (
         <>
-            <div className="text-sm breadcrumbs w-10/12 mx-auto">
+            <div className="text-sm breadcrumbs w-10/12 mx-auto text-white">
                 <ul>
                     <li>
                         <Link to="/">Home</Link>
@@ -45,7 +43,7 @@ export default function Login() {
                 </ul>
             </div>
             <div className="p-8 lg:w-1/2 mx-auto ">
-                <div className="bg-gray-700 rounded-t-lg p-8">
+                <div className="bg-slate-800 rounded-t-lg p-8">
                     <p className="text-center text-sm text-gray-400 font-light">
                         Sign in with
                     </p>
@@ -79,7 +77,7 @@ export default function Login() {
                         </div>
                     </div>
                 </div>
-                <div className="bg-gray-600 rounded-b-lg py-12 px-4 lg:px-24">
+                <div className="bg-slate-700 rounded-b-lg py-12 px-4 lg:px-24">
                     <p className="text-center text-sm text-gray-100 font-light">
                         Or sign in with credentials
                     </p>
@@ -117,18 +115,14 @@ export default function Login() {
                             </div>
                         </div>
                         <div className="flex flex-col items-center justify-center mt-2">
-                            <p className="text-slate-200 my-4">
-                                {errorMessage}
+                            <p className="my-3 text-yellow-200 text-center">
+                                {error}
                             </p>
-                            {loading ? (
-                                <Loading />
-                            ) : (
-                                <button className="text-white py-2 px-4 uppercase rounded bg-indigo-500 hover:bg-indigo-600 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
-                                    Sign in
-                                </button>
-                            )}
+                            <button className="text-white py-2 px-4 uppercase rounded bg-indigo-500 hover:bg-indigo-600 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
+                                Sign in
+                            </button>
                         </div>
-                        <p className="text-center mt-5">
+                        <p className="text-center mt-5 text-slate-300">
                             Don't have an account?{" "}
                             <Link
                                 to="/register"

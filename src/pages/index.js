@@ -3,7 +3,8 @@ import About from "./About";
 import Contact from "./contact/Contact";
 import Login from "./login/Login";
 import Register from "./register/Register";
-import Search from "./search/Search";
+import Search from "./Search";
 import Books from "./Books";
+import Cart from "./Cart";
 
-export { Home, About, Contact, Login, Register, Search, Books };
+export { Home, About, Contact, Login, Register, Search, Books, Cart };

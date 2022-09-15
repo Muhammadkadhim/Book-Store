@@ -54,9 +54,9 @@ export default function Navbar() {
                     </Link>
                 </div>
                 <button className="btn btn-ghost btn-circle text-white">
-                    <div className="indicator">
+                    <Link to="/cart" className="indicator">
                         <MdOutlineShoppingCart fontSize={"22px"} />
-                    </div>
+                    </Link>
                 </button>
                 <div className="dropdown dropdown-end">
                     {authorized ? (

@@ -8,8 +8,8 @@ import {
 import { AiOutlinePercentage } from "react-icons/ai";
 export default function About() {
     return (
-        <div className=" w-full mx-auto flex flex-col gap-10 ">
-            <div className="w-full h-fit p-10 bg-base-200 flex flex-col lg:flex-row text-center lg:text-left gap-10 items-center rounded-lg">
+        <div className=" w-full mx-auto flex flex-col gap-10 py-10">
+            <div className="w-full h-fit p-10 bg-slate-800 flex flex-col lg:flex-row text-center lg:text-left gap-10 items-center rounded-lg">
                 <div className="flex flex-col gap-5">
                     <h1 className="text-4xl text-white ">Kitab Store</h1>
                     <p className="text-gray-300 text-sm">
@@ -37,23 +37,23 @@ export default function About() {
                     Voluptatibus, saepe incidunt ipsam eveniet inventore cum?
                 </p>
                 <div className="flex flex-wrap gap-5 justify-center mt-5">
-                    <div className="w-[200px] h-[200px] flex flex-col items-center justify-center shadow-lg rounded-md bg-base-300 text-white hover:bg-slate-200 hover:text-base-300 transition ease-in-out duration-300">
+                    <div className="w-[200px] h-[200px] flex flex-col items-center justify-center shadow-lg rounded-md bg-slate-800 text-white hover:bg-slate-200 hover:text-base-300 transition ease-in-out duration-300">
                         <MdOutlineLocalShipping style={{ fontSize: "64px" }} />
                         <h1 className="text-lg font-medium ">
                             Delivery Service
                         </h1>
                     </div>
-                    <div className="w-[200px] h-[200px] flex flex-col items-center justify-center shadow-lg rounded-md bg-base-300 text-white hover:bg-slate-200 hover:text-base-300 transition ease-in-out duration-300">
+                    <div className="w-[200px] h-[200px] flex flex-col items-center justify-center shadow-lg rounded-md bg-slate-800 text-white hover:bg-slate-200 hover:text-base-300 transition ease-in-out duration-300">
                         <MdCompareArrows style={{ fontSize: "64px" }} />
                         <h1 className="text-lg font-medium ">
                             Shipping and Return
                         </h1>
                     </div>
-                    <div className="w-[200px] h-[200px] flex flex-col items-center justify-center shadow-lg rounded-md bg-base-300 text-white hover:bg-slate-200 hover:text-base-300 transition ease-in-out duration-300">
+                    <div className="w-[200px] h-[200px] flex flex-col items-center justify-center shadow-lg rounded-md bg-slate-800 text-white hover:bg-slate-200 hover:text-base-300 transition ease-in-out duration-300">
                         <AiOutlinePercentage style={{ fontSize: "64px" }} />
                         <h1 className="text-lg font-medium ">Promotion</h1>
                     </div>
-                    <div className="w-[200px] h-[200px] flex flex-col items-center justify-center shadow-lg rounded-md bg-base-300 text-white hover:bg-slate-200 hover:text-base-300 transition ease-in-out duration-300">
+                    <div className="w-[200px] h-[200px] flex flex-col items-center justify-center shadow-lg rounded-md bg-slate-800 text-white hover:bg-slate-200 hover:text-base-300 transition ease-in-out duration-300">
                         <MdPersonOutline style={{ fontSize: "64px" }} />
                         <h1 className="text-lg font-medium ">
                             24 Hour Service

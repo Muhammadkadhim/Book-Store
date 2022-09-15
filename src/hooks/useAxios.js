@@ -10,7 +10,6 @@ export default function useAxios({ endpoint, specialEndpoint, limit, bookId }) {
     const [authors, setAuthors] = React.useState([]);
     const [authorsKeys, setAuthorsKeys] = React.useState([]);
 
-    // getting general books for the home page
     React.useEffect(() => {
         if (endpoint) {
             axios

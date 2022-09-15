@@ -1,14 +1,22 @@
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import { MdFavoriteBorder, MdOutlineShoppingCart } from "react-icons/md";
+import {
+    MdFavorite,
+    MdFavoriteBorder,
+    MdOutlineShoppingCart,
+    MdRemoveShoppingCart,
+} from "react-icons/md";
 import { Tooltip } from "flowbite-react";
 import { delimiter } from "../utils/delimiter";
 import { cover_not_found } from "../assets";
 import { Loading } from "./";
 import useAxios from "../hooks/useAxios";
+import { useDispatch, useSelector } from "react-redux";
+import { saveToCart, saveToFavourites } from "../redux/userSlice";
 
 export default function BookDetail() {
     const { category, bookId } = useParams();
+    console.log(bookId);
     const [bookDetails, setBookDetails] = useState();
     const [bookAuthors, setBookAuthors] = useState();
 
@@ -23,6 +31,36 @@ export default function BookDetail() {
     useEffect(() => {
         setBookAuthors(authors);
     }, [authors]);
+
+    const dispatch = useDispatch();
+
+    const [addedToCart, setAddedToCart] = useState(false);
+    const [addedToFaourites, setAddedToFavourites] = useState(false);
+
+    const cart = useSelector((state) => state.user.cart);
+    const favourites = useSelector((state) => state.user.favourites);
+
+    useEffect(() => {
+        cart.forEach((item) => {
+            if (item === `/works/${bookId}`) {
+                setAddedToCart(true);
+            }
+        });
+        favourites.forEach((item) => {
+            if (item === `/works/${bookId}`) {
+                setAddedToFavourites(true);
+            }
+        });
+    }, []);
+
+    const addToCart = () => {
+        dispatch(saveToCart(`/works/${bookId}`));
+        setAddedToCart(!addedToCart);
+    };
+    const addToFavourites = () => {
+        dispatch(saveToFavourites(`/works/${bookId}`));
+        setAddedToFavourites(!addedToFaourites);
+    };
 
     return (
         <>
@@ -94,23 +132,61 @@ export default function BookDetail() {
                                             ${bookDetails.price}.00
                                         </span>
                                         <div className="flex gap-5 items-center">
-                                            <Tooltip content="Add to Cart">
-                                                <button className="text-orange-300">
-                                                    <MdOutlineShoppingCart
-                                                        style={{
-                                                            fontSize: "24px",
-                                                        }}
-                                                    />
+                                            <Tooltip
+                                                content={`${
+                                                    addedToCart
+                                                        ? "Remove from cart"
+                                                        : "Add to cart"
+                                                }`}
+                                            >
+                                                <button
+                                                    className="text-orange-300"
+                                                    onClick={addToCart}
+                                                >
+                                                    {addedToCart ? (
+                                                        <MdRemoveShoppingCart
+                                                            style={{
+                                                                fontSize:
+                                                                    "24px",
+                                                            }}
+                                                        />
+                                                    ) : (
+                                                        <MdOutlineShoppingCart
+                                                            style={{
+                                                                fontSize:
+                                                                    "24px",
+                                                            }}
+                                                        />
+                                                    )}
                                                 </button>
                                             </Tooltip>
 
-                                            <Tooltip content="Add to Favorites">
-                                                <button className="text-orange-300">
-                                                    <MdFavoriteBorder
-                                                        style={{
-                                                            fontSize: "24px",
-                                                        }}
-                                                    />
+                                            <Tooltip
+                                                content={`${
+                                                    addedToFaourites
+                                                        ? "Remove from favorites"
+                                                        : "Add to favorites"
+                                                }`}
+                                            >
+                                                <button
+                                                    className="text-orange-300"
+                                                    onClick={addToFavourites}
+                                                >
+                                                    {addedToFaourites ? (
+                                                        <MdFavorite
+                                                            style={{
+                                                                fontSize:
+                                                                    "24px",
+                                                            }}
+                                                        />
+                                                    ) : (
+                                                        <MdFavoriteBorder
+                                                            style={{
+                                                                fontSize:
+                                                                    "24px",
+                                                            }}
+                                                        />
+                                                    )}
                                                 </button>
                                             </Tooltip>
                                         </div>

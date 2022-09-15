@@ -96,10 +96,10 @@ export default function Contact() {
                                     />
                                 </div>
                                 <div className="w-full">
-                                    <h4 className="font-bold text-dark text-xl mb-1">
+                                    <h4 className="font-bold text-slate-300 text-xl mb-1">
                                         Our Location
                                     </h4>
-                                    <p className="text-base text-body-color">
+                                    <p className="text-base text-slate-500">
                                         99 S.t Jomblo Park Pekanbaru 28292.
                                         Indonesia
                                     </p>
@@ -128,10 +128,10 @@ export default function Contact() {
                                     />
                                 </div>
                                 <div className="w-full">
-                                    <h4 className="font-bold text-dark text-xl mb-1">
+                                    <h4 className="font-bold text-slate-300 text-xl mb-1">
                                         Phone Number
                                     </h4>
-                                    <p className="text-base text-body-color">
+                                    <p className="text-base text-slate-500">
                                         (+62)81 414 257 9980
                                     </p>
                                 </div>
@@ -159,18 +159,18 @@ export default function Contact() {
                                     />
                                 </div>
                                 <div className="w-full">
-                                    <h4 className="font-bold text-dark text-xl mb-1">
+                                    <h4 className="font-bold text-slate-300 text-xl mb-1">
                                         Email Address
                                     </h4>
-                                    <p className="text-base text-body-color">
+                                    <p className="text-base text-slate-500">
                                         info@yourdomain.com
                                     </p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div className="w-full lg:w-1/2 xl:w-5/12 px-4">
-                        <div className="bg-white relative rounded-lg p-8 sm:p-12 shadow-lg">
+                    <div className="w-full lg:w-1/2 xl:w-5/12 px-4 ">
+                        <div className="bg-slate-800 relative rounded-lg p-8 sm:p-12 shadow-lg">
                             <form ref={form} onSubmit={handleSubmit(onSubmit)}>
                                 <div className="mb-6 relative">
                                     <input
@@ -185,7 +185,7 @@ export default function Contact() {
                                 rounded
                                 py-3
                                 px-[14px]
-                                text-body-color text-base-100
+                                text-body-color text-slate-900
                                 border border-[f0f0f0]
                                 outline-none
                                 focus-visible:shadow-none
@@ -224,7 +224,7 @@ export default function Contact() {
                                 rounded
                                 py-3
                                 px-[14px]
-                                text-body-color text-base-100
+                                text-body-color text-slate-900
                                 border border-[f0f0f0]
                                 outline-none
                                 focus-visible:shadow-none
@@ -263,7 +263,7 @@ export default function Contact() {
                                 rounded
                                 py-3
                                 px-[14px]
-                                text-body-color text-base-100
+                                text-body-color text-slate-900
                                 border border-[f0f0f0]
                                 outline-none
                                 focus-visible:shadow-none
@@ -302,7 +302,7 @@ export default function Contact() {
                                 rounded
                                 py-3
                                 px-[14px]
-                                text-body-color text-base-100
+                                text-body-color text-slate-900
                                 border border-[f0f0f0]
                                 resize-none
                                 outline-none
@@ -333,13 +333,14 @@ export default function Contact() {
                                     <button
                                         className="
                                 w-full
-                                text-white
-                                bg-base-300
+                                text-slate-100
+                                bg-transparent
                                 rounded
-                                border border-primary
+                                border border-orange-400
                                 p-3
                                 transition
-                                hover:bg-opacity-90
+                                hover:bg-orange-400
+                                hover:text-slate-900
                                 "
                                     >
                                         Send Message

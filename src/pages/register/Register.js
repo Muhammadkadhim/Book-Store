@@ -25,7 +25,7 @@ export default function Register() {
 
     return (
         <>
-            <div className="text-sm breadcrumbs  w-10/12 mx-auto">
+            <div className="text-sm breadcrumbs  w-10/12 mx-auto text-white">
                 <ul>
                     <li>
                         <Link to="/">Home</Link>
@@ -34,7 +34,7 @@ export default function Register() {
                 </ul>
             </div>
             <div className="p-8 lg:w-1/2 mx-auto">
-                <div className="bg-gray-700 rounded-t-lg p-8">
+                <div className="bg-slate-800 rounded-t-lg p-8">
                     <p className="text-center text-sm text-gray-400 font-light">
                         Register with
                     </p>
@@ -68,7 +68,7 @@ export default function Register() {
                         </div>
                     </div>
                 </div>
-                <div className="bg-gray-600 rounded-b-lg py-12 px-4 lg:px-24">
+                <div className="bg-slate-700 rounded-b-lg py-12 px-4 lg:px-24">
                     <p className="text-center text-sm text-gray-100 font-light">
                         Or Register with credentials
                     </p>
@@ -164,12 +164,12 @@ export default function Register() {
                                 </div>
                             </div>
                         </div>
-                        <div className="flexitems-center justify-center mt-8">
+                        <div className="flex items-center justify-center mt-8">
                             <button className="text-white py-2 px-4 uppercase rounded bg-indigo-500 hover:bg-indigo-600 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
                                 Register
                             </button>
                         </div>
-                        <p className="text-center mt-5">
+                        <p className="text-center mt-5 text-slate-300">
                             have an account?{" "}
                             <Link to="/login" className="underline text-white">
                                 {" "}
