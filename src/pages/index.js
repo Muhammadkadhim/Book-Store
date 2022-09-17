@@ -6,5 +6,16 @@ import Register from "./register/Register";
 import Search from "./Search";
 import Books from "./Books";
 import Cart from "./Cart";
+import Favourites from "./Favourites";
 
-export { Home, About, Contact, Login, Register, Search, Books, Cart };
+export {
+    Home,
+    About,
+    Contact,
+    Login,
+    Register,
+    Search,
+    Books,
+    Cart,
+    Favourites,
+};

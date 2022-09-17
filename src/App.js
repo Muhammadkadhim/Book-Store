@@ -8,6 +8,7 @@ import {
     Books,
     Contact,
     Cart,
+    Favourites,
 } from "./pages";
 
 import { Routes, Route } from "react-router-dom";
@@ -31,6 +32,7 @@ function App() {
                         element={<BookDetail />}
                     />
                     <Route path="/cart" element={<Cart />} />
+                    <Route path="/favourites" element={<Favourites />} />
                 </Routes>
             </Layout>
         </Container>

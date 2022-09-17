@@ -1,4 +1,8 @@
-import { MdOutlinePersonOutline, MdOutlineShoppingCart } from "react-icons/md";
+import {
+    MdFavoriteBorder,
+    MdOutlinePersonOutline,
+    MdOutlineShoppingCart,
+} from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
 import NavLinks from "./Menu";
 import { logo } from "../../assets/";
@@ -53,6 +57,11 @@ export default function Navbar() {
                         </svg>
                     </Link>
                 </div>
+                <button className="btn btn-ghost btn-circle text-white">
+                    <Link to="/favourites" className="indicator">
+                        <MdFavoriteBorder fontSize={"22px"} />
+                    </Link>
+                </button>
                 <button className="btn btn-ghost btn-circle text-white">
                     <Link to="/cart" className="indicator">
                         <MdOutlineShoppingCart fontSize={"22px"} />

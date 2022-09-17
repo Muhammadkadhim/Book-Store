@@ -22,24 +22,24 @@ export default function Book(props) {
     const favourites = useSelector((state) => state.user.favourites);
 
     useEffect(() => {
-        cart.forEach((item) => {
-            if (item === props.book.id) {
+        cart.map((item) => {
+            if (item.id === props.book.id) {
                 setAddedToCart(true);
             }
         });
-        favourites.forEach((item) => {
-            if (item === props.book.id) {
+        favourites.map((item) => {
+            if (item.id === props.book.id) {
                 setAddedToFavourites(true);
             }
         });
     }, []);
 
     const addToCart = () => {
-        dispatch(saveToCart(props.book.id));
+        dispatch(saveToCart(props.book));
         setAddedToCart(!addedToCart);
     };
     const addToFavourites = () => {
-        dispatch(saveToFavourites(props.book.id));
+        dispatch(saveToFavourites(props.book));
         setAddedToFavourites(!addedToFaourites);
     };
 

@@ -28,18 +28,26 @@ export const userSlice = createSlice({
             state.authorized = false;
         },
         saveToCart: (state, action) => {
-            if (!state.cart.includes(action.payload)) {
+            const index = state.cart.findIndex(
+                (book) => book.id === action.payload.id
+            );
+            if (index === -1) {
                 state.cart.push(action.payload);
             } else {
-                state.cart.filter((item) => item !== action.payload);
+                state.cart = state.cart.filter(
+                    (favourite) => favourite.id !== action.payload.id
+                );
             }
         },
         saveToFavourites: (state, action) => {
-            if (!state.favourites.includes(action.payload)) {
+            const index = state.favourites.findIndex(
+                (favourite) => favourite.id === action.payload.id
+            );
+            if (index === -1) {
                 state.favourites.push(action.payload);
             } else {
                 state.favourites = state.favourites.filter(
-                    (item) => item !== action.payload
+                    (favourite) => favourite.id !== action.payload.id
                 );
             }
         },
