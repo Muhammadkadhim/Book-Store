@@ -132,7 +132,7 @@ export default function Contact() {
                                         Phone Number
                                     </h4>
                                     <p className="text-base text-slate-500">
-                                        (+62)81 414 257 9980
+                                        (+964) 000 000 0000
                                     </p>
                                 </div>
                             </div>
@@ -163,7 +163,7 @@ export default function Contact() {
                                         Email Address
                                     </h4>
                                     <p className="text-base text-slate-500">
-                                        info@yourdomain.com
+                                        customer@kitabstore.com
                                     </p>
                                 </div>
                             </div>

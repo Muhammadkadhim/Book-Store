@@ -8,9 +8,10 @@ import { delimiter } from "../utils/delimiter";
 import { Link } from "react-router-dom";
 import { Tooltip } from "flowbite-react";
 import { useDispatch, useSelector } from "react-redux";
-import { saveToCart, saveToFavourites } from "../redux/userSlice";
+import { saveToFavourites } from "../redux/userSlice";
 import { cover_not_found } from "../assets";
 import { useEffect, useState } from "react";
+import { saveToCart } from "../redux/CartSlice";
 
 export default function Book(props) {
     const dispatch = useDispatch();

@@ -13,6 +13,7 @@ import Special from "./Special";
 import Slider from "./Slider";
 import Testimonials from "./Testimonials";
 import CookieBanner from "./CookieBanner";
+import CartItem from "./CartItem";
 
 export {
     Navbar,
@@ -30,4 +31,5 @@ export {
     Slider,
     Testimonials,
     CookieBanner,
+    CartItem,
 };

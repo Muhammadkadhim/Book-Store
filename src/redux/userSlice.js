@@ -27,18 +27,7 @@ export const userSlice = createSlice({
         logout: (state) => {
             state.authorized = false;
         },
-        saveToCart: (state, action) => {
-            const index = state.cart.findIndex(
-                (book) => book.id === action.payload.id
-            );
-            if (index === -1) {
-                state.cart.push(action.payload);
-            } else {
-                state.cart = state.cart.filter(
-                    (favourite) => favourite.id !== action.payload.id
-                );
-            }
-        },
+
         saveToFavourites: (state, action) => {
             const index = state.favourites.findIndex(
                 (favourite) => favourite.id === action.payload.id
@@ -54,13 +43,7 @@ export const userSlice = createSlice({
     },
 });
 
-export const {
-    login,
-    register,
-    authorization,
-    logout,
-    saveToCart,
-    saveToFavourites,
-} = userSlice.actions;
+export const { login, register, authorization, logout, saveToFavourites } =
+    userSlice.actions;
 
 export default userSlice.reducer;

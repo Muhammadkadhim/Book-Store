@@ -36,7 +36,7 @@ export default function Navbar() {
                 </Link>
             </div>
             <div className="navbar-end">
-                <div className="hidden md:flex">
+                <div className="hidden md:flex ">
                     <Link
                         to="/search"
                         className="btn btn-ghost btn-circle text-white"
@@ -78,10 +78,12 @@ export default function Navbar() {
                             </label>
                             <ul
                                 tabIndex="0"
-                                className="menu menu-compact dropdown-content  mt-3 p-2 shadow-xl text-white  bg-slate-800 rounded-lg w-52"
+                                className="menu menu-compact dropdown-content  mt-3 p-2 shadow-xl text-white  bg-slate-800 rounded-lg w-fit"
                             >
-                                <li>{userInfo && userInfo.username}</li>
-                                <li>{userInfo && userInfo.email}</li>
+                                <li>
+                                    username: {userInfo && userInfo.username}
+                                </li>
+                                <li>email: {userInfo && userInfo.email}</li>
                                 <li className="flex items-center border-t mt-2">
                                     <button
                                         className="w-full grid place-content-center"

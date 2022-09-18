@@ -12,7 +12,8 @@ import { cover_not_found } from "../assets";
 import { Loading } from "./";
 import useAxios from "../hooks/useAxios";
 import { useDispatch, useSelector } from "react-redux";
-import { saveToCart, saveToFavourites } from "../redux/userSlice";
+import { saveToFavourites } from "../redux/userSlice";
+import { saveToCart } from "../redux/CartSlice";
 
 export default function BookDetail() {
     const { category, bookId } = useParams();

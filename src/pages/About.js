@@ -53,7 +53,7 @@ export default function About() {
                         <AiOutlinePercentage style={{ fontSize: "64px" }} />
                         <h1 className="text-lg font-medium ">Promotion</h1>
                     </div>
-                    <div className="w-[200px] h-[200px] flex flex-col items-center justify-center shadow-lg rounded-md bg-slate-800 text-white hover:bg-slate-200 hover:text-slate-500 transition ease-in-out duration-300">
+                    <div className="w-[200px] h-[200px] flex flex-col items-center justify-center shadow-lg rounded-md bg-slate-800 text-white hover:bg-slate-200 hover:text-slate-900 transition ease-in-out duration-300">
                         <MdPersonOutline style={{ fontSize: "64px" }} />
                         <h1 className="text-lg font-medium ">
                             24 Hour Service
