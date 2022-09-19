@@ -69,7 +69,9 @@ export default function Book(props) {
                     />
                 </Link>
             )}
-            <h1 className="text-md">{delimiter(props.book.title, 20)}</h1>
+            <h1 className="text-md">
+                {props.book.title && delimiter(props.book.title, 20)}
+            </h1>
             <p className="text-md text-orange-200 font-bold">
                 ${props.book.price}
             </p>

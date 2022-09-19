@@ -32,7 +32,7 @@ function App() {
                         element={<BookDetail />}
                     />
                     <Route path="/cart" element={<Cart />} />
-                    <Route path="/favourites" element={<Favourites />} />
+                    <Route path="/favourites" exact element={<Favourites />} />
                 </Routes>
             </Layout>
         </Container>

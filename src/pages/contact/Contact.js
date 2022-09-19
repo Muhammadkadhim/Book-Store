@@ -46,6 +46,7 @@ export default function Contact() {
             document.getElementById("message").classList.add("hidden");
         }, 5000);
     };
+
     return (
         <section className=" py-20 lg:py-[120px] overflow-hidden relative z-10 w-10/12 md:w-11/12 mx-auto">
             <div className="container">

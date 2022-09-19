@@ -1,14 +1,49 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import cover_not_found from "../assets/cover_not_found.svg";
 import {
     MdOutlineShoppingCart,
-    MdFavoriteBorder,
     MdOutlineEast,
+    MdFavorite,
+    MdOutlineFavoriteBorder,
+    MdRemoveShoppingCart,
 } from "react-icons/md";
 import { Tooltip } from "flowbite-react";
+import { useDispatch, useSelector } from "react-redux";
+import { saveToCart } from "../redux/CartSlice";
+import { saveToFavourites } from "../redux/userSlice";
 
 export default function TrendingBook({ book }) {
+    const dispatch = useDispatch();
+
+    const [addedToCart, setAddedToCart] = useState(false);
+    const [addedToFaourites, setAddedToFavourites] = useState(false);
+
+    const cart = useSelector((state) => state.user.cart);
+    const favourites = useSelector((state) => state.user.favourites);
+
+    useEffect(() => {
+        cart.map((item) => {
+            if (item.id === book.id) {
+                setAddedToCart(true);
+            }
+        });
+        favourites.map((item) => {
+            if (item.id === book.id) {
+                setAddedToFavourites(true);
+            }
+        });
+    }, []);
+
+    const addToCart = () => {
+        dispatch(saveToCart(book));
+        setAddedToCart(!addedToCart);
+    };
+    const addToFavourites = () => {
+        dispatch(saveToFavourites(book));
+        setAddedToFavourites(!addedToFaourites);
+    };
+
     return (
         <div className="pl-5 md:px-20 flex gap-5 md:gap-10 items-center  h-full bg-slate-800 rounded-lg">
             {book.cover ? (
@@ -31,17 +66,42 @@ export default function TrendingBook({ book }) {
                     ${book.price}
                 </p>
                 <div className="gap-5 mt-3 hidden md:flex">
-                    <Tooltip content="Add to Cart">
-                        <button className="text-orange-300">
-                            <MdOutlineShoppingCart
-                                style={{ fontSize: "24px" }}
-                            />
+                    <Tooltip
+                        content={`${
+                            addedToCart ? "Remove from cart" : "Add to cart"
+                        }`}
+                    >
+                        <button className="text-orange-300" onClick={addToCart}>
+                            {addedToCart ? (
+                                <MdRemoveShoppingCart
+                                    style={{ fontSize: "18px" }}
+                                />
+                            ) : (
+                                <MdOutlineShoppingCart
+                                    style={{ fontSize: "18px" }}
+                                />
+                            )}
                         </button>
                     </Tooltip>
 
-                    <Tooltip content="Add to Favorites">
-                        <button className="text-orange-300">
-                            <MdFavoriteBorder style={{ fontSize: "24px" }} />
+                    <Tooltip
+                        content={`${
+                            addedToFaourites
+                                ? "Remove from favorites"
+                                : "Add to favorites"
+                        }`}
+                    >
+                        <button
+                            className="text-orange-300"
+                            onClick={addToFavourites}
+                        >
+                            {addedToFaourites ? (
+                                <MdFavorite style={{ fontSize: "18px" }} />
+                            ) : (
+                                <MdOutlineFavoriteBorder
+                                    style={{ fontSize: "18px" }}
+                                />
+                            )}
                         </button>
                     </Tooltip>
                 </div>
