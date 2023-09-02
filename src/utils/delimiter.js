@@ -1,5 +1,5 @@
 export const delimiter = (text, limit) => {
-    if (text && limit) {
+    if (typeof text === 'string' && typeof limit === 'number') {
         if (text.length <= limit) {
             return text;
         } else {
